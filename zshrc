@@ -30,7 +30,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-  bundler cake cap coffee debian docker fabric gem gibo git github
+  bundler cake cap coffee debian docker extract fabric gem gibo git github
   history-substring-search npm per-directory-history pip rails redis-cli rvm
   sbt scala screen sublime tmux zsh-syntax-highlighting
 )
