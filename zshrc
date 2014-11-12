@@ -29,27 +29,37 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler cake cap coffee debian docker fabric gem gibo git github history-substring-search npm per-directory-history pip rails redis-cli rvm sbt scala screen sublime tmux zsh-syntax-highlighting)
+plugins=(
+  bundler cake cap coffee debian docker fabric gem gibo git github
+  history-substring-search npm per-directory-history pip rails redis-cli rvm
+  sbt scala screen sublime tmux zsh-syntax-highlighting
+)
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+ZSH_TMUX_AUTOSTART=true
 
 export WORKON_HOME=$HOME/.venvs
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+# avoid duplicates in PATH, add stuff
+# XXX: symlink everything to ~/bin?
 typeset -U path
 path=($HOME/Tools/elixir/bin:$HOME/bin:$HOME/Tools/sbt/bin:$HOME/.luarocks/bin:$HOME/.local/bin "$path[@]")
+
 source /home/itsbth/.nvm/nvm.sh
 export NODE_PATH=$(npm config get prefix)/lib/node_modules
 
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 
-export EDITOR='subl -w'
+# $+commands[subl] && export EDITOR='subl -w'
+export EDITOR=vim
 
 # Why? Why not? :-)
 alias fucking=sudo
 alias :q=exit
 unalias ag # :/
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+path+="$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Who stole this?
