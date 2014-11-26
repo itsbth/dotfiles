@@ -32,12 +32,12 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   bundler cake cap coffee debian docker extract fabric gem gibo git github
   history-substring-search npm per-directory-history pip rails redis-cli rvm
-  sbt scala screen sublime tmux zsh-syntax-highlighting
+  sbt scala screen ssh-agent sublime tmux zsh-syntax-highlighting
 )
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART=true
 
 export WORKON_HOME=$HOME/.venvs
 
