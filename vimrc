@@ -6,6 +6,8 @@ if has('nvim')
   runtime! python_setup.vim
 endif
 
+let mapleader=' '
+
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
@@ -31,6 +33,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'klen/python-mode'
+Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/greper.vim'
@@ -73,9 +76,15 @@ syntax on
 
 set number
 
+set hidden
+
 set tabstop=2 shiftwidth=2
 set smarttab
 set expandtab
+
+set ignorecase
+set smartcase
+set incsearch
 
 set autoread
 set nowrap
@@ -96,6 +105,12 @@ if has("gui_running")
   if has("gui_gtk2")
     " hide toolbar
     set guioptions-=T
+    " hide menu
+    set guioptions-=m
+    " kill gui tabs
+    set guioptions-=e
+    " kill scrollbars
+    set guioptions-=r
     set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 10
     set background=dark
     colorscheme base16-default
@@ -127,15 +142,15 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-nmap <space> <leader>
-nmap <space><space> <leader><leader>
-
-xmap <space> <leader>
+nmap <F8> :TagbarToggle<CR>
 
 nmap <leader>- :source ~/.vimrc<CR>:redraw!<CR>:echo "~/.vimrc reloaded"<CR>
 nmap <leader>w :w<CR>
 nmap <leader>W :set invwrap<CR>:set wrap?<CR>
 nmap <leader>\ gg=G``:echo "reindent global"<CR>
+
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab> :tabnext<CR>
 
 " NERDTree stuff
 nmap <leader>n :NERDTreeToggle<CR>
