@@ -26,7 +26,7 @@ antigen bundle tmux
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme robbyrussell
 
-antigen bundle https://github.com/simonwhitaker/gibo.git gibo-completion.zsh
+antigen bundle simonwhitaker/gibo gibo-completion.zsh
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
