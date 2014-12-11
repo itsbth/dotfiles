@@ -49,6 +49,11 @@ Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'gkz/vim-ls'
+Plugin 'leafo/moonscript-vim'
+Plugin 'hylang/vim-hy'
+Plugin 'slimv.vim'
 " ...
 
 call vundle#end()
