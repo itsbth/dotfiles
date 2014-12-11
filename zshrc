@@ -55,7 +55,7 @@ export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 # $+commands[subl] && export EDITOR='subl -w'
 export EDITOR=vim
 
-if ! [[ $LUA_PATH =~ /luarocks/ ]]; then
+if ! [[ $LUA_PATH =~ luarocks ]]; then
   export LUA_PATH="$HOME/.luarocks/share/lua/5.2/?.lua;$(lua -e 'print(package.path)')"
   export LUA_CPATH="$HOME/.luarocks/lib/lua/5.2/?.so;$(lua -e 'print(package.path)')"
 fi
