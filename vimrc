@@ -1,11 +1,6 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-" nvim python support
-if has('nvim')
-  runtime! python_setup.vim
-endif
-
 let mapleader=' '
 
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -19,20 +14,23 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-repeat'
 
 
-Plugin 'AutoClose'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'SirVer/ultisnips'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'amdt/vim-niji'
+Plugin 'AutoClose'
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plugin 'derekwyatt/vim-scala'
+Plugin 'gkz/vim-ls'
 Plugin 'godlygeek/tabular'
 Plugin 'hexHighlight.vim'
 Plugin 'honza/vim-snippets'
+Plugin 'hylang/vim-hy'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'klen/python-mode'
+Plugin 'leafo/moonscript-vim'
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'rizzatti/funcoo.vim'
@@ -40,20 +38,23 @@ Plugin 'rizzatti/greper.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'SirVer/ultisnips'
+Plugin 'slimv.vim'
+Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-leiningen'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'gkz/vim-ls'
-Plugin 'leafo/moonscript-vim'
-Plugin 'hylang/vim-hy'
-Plugin 'slimv.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'carlosgaldino/elixir-snippets'
+" Plugin 'Shougo/neocomplete.vim'
 " ...
 
 call vundle#end()
@@ -70,9 +71,9 @@ filetype plugin indent on     " required!
 
 " powerline
 set laststatus=2
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 set t_Co=256
 " colorscheme Tomorrow-Night-Bright
@@ -100,6 +101,8 @@ if exists('+breakindent')
   set wrap
 endif
 set whichwrap+=<,>,h,l
+
+set backspace=indent,eol,start
 
 set mouse=a
 
@@ -146,6 +149,8 @@ if executable('ag')
   " Skip caching since ag is so fast
   let g:ctrlp_use_caching = 0
 endif
+
+let g:UltiSnipsExpandTrigger="<c-return>"
 
 nmap <F8> :TagbarToggle<CR>
 
