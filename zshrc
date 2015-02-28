@@ -33,6 +33,7 @@ antigen bundle screen ssh-agent
 antigen bundle sublime 
 antigen bundle tmux 
 antigen bundle virtualenvwrapper
+antigen bundle autojump
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle sindresorhus/pure
 
@@ -44,8 +45,9 @@ antigen apply
 
 # ZSH_TMUX_AUTOSTART=true
 
-export WORKON_HOME=$HOME/.venvs
+export $(gnome-keyring-daemon --start)
 
+export WORKON_HOME=$HOME/.venvs
 
 source /home/itsbth/.nvm/nvm.sh
 export NODE_PATH=$(npm config get prefix)/lib/node_modules
