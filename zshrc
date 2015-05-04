@@ -11,33 +11,40 @@ source $HOME/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
-antigen bundle bundler 
-antigen bundle cake 
-# antigen bundle cap 
-antigen bundle coffee 
-antigen bundle debian 
-antigen bundle docker 
-antigen bundle extract 
-antigen bundle fabric 
-antigen bundle gem 
-# antigen bundle gibo 
-antigen bundle git 
-antigen bundle github history-substring-search 
-antigen bundle npm per-directory-history 
-antigen bundle pip 
-antigen bundle rails redis-cli 
-antigen bundle rvm 
-antigen bundle sbt 
-antigen bundle scala 
-antigen bundle screen ssh-agent 
-antigen bundle sublime 
-antigen bundle tmux 
-antigen bundle virtualenvwrapper
-antigen bundle autojump
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle sindresorhus/pure
+antigen bundles <<EOBUNDLES
+	autojump
+  bgnotify
+  bower
+	bundler
+  cabal
+	cake
+	coffee
+	debian
+	docker
+	extract
+	fabric
+	gem
+	git
+	github
+  history-substring-search
+	npm
+  per-directory-history
+	pip
+	rails
+  redis-cli
+	rvm
+	sbt
+	scala
+	screen
+	sublime
+	tmux
+	virtualenvwrapper
 
-antigen bundle simonwhitaker/gibo gibo-completion.zsh
+	zsh-users/zsh-syntax-highlighting
+	sindresorhus/pure
+
+	simonwhitaker/gibo gibo-completion.zsh
+EOBUNDLES
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
@@ -68,3 +75,5 @@ alias :q=exit
 unalias ag # :/
 path+="$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Who stole this?
+
+[ -s "/home/itsbth/.dnx/dnvm/dnvm.sh" ] && . "/home/itsbth/.dnx/dnvm/dnvm.sh" # Load dnvm
