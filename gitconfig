@@ -2,3 +2,5 @@
 	email = itsbth@itsbth.com
 [push]
 	default = simple
+[github]
+	user = itsbth
