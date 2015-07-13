@@ -76,10 +76,8 @@ URxvt*depth: 32
 ! Select the fonts to be used. This is a comma separated list of font names that
 ! URxvt*font: fontlist
 ! URxvt*font: xft:Sauce Code Powerline:style=Regular
-URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
 
-! URxvt*boldFont: fontlist
-URxvt*boldFont: xft:Sauce Code Powerline:style=Bold
+URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Symbola:pixelsize=13:antialias=true:hinting=true
 
 ! 
 ! URxvt*italicFont: fontlist
