@@ -70,10 +70,10 @@ URxvt.depth: 32
 
 ! Select the fonts to be used. This is a comma separated list of font names that
 ! URxvt*font: fontlist
-URxvt.font: xft:Source Code Powerline:style=Regular
+URxvt.font: xft:Source Code Pro for Powerline:style=Regular
 
 ! URxvt*boldFont: fontlist
-URxvt.boldFont: xft:Source Code Powerline:style=Bold
+URxvt.boldFont: xft:Source Code Pro for Powerline:style=Bold
 
 ! 
 ! URxvt*italicFont: fontlist

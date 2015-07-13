@@ -29,9 +29,8 @@
      company-mode
      dockerfile
      editorconfig
-     (git :variables
-          git-enable-github-support t
-          git-gutter-use-fringe t)
+     git
+     github
      markdown
      org
      shell
@@ -46,7 +45,8 @@
      c-c++
      csharp
      emacs-lisp
-     erlang-elixir
+     elixir
+     erlang
      fsharp
      haskell
      html
@@ -64,6 +64,8 @@
      web-mode
      itsbth-generic
     )
+   ;; Additional packages
+   dotspacemacs-additional-packages '(base16-theme)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -98,7 +100,7 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(;;base16-default
+   dotspacemacs-themes '(base16-eighties-dark
                          solarized-light
                          solarized-dark
                          leuven
