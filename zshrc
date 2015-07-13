@@ -3,7 +3,7 @@
 # avoid duplicates in PATH, add stuff
 # XXX: symlink everything to ~/bin?
 typeset -U path
-path=($HOME/Tools/elixir/bin:$HOME/bin:$HOME/Tools/sbt/bin:$HOME/.luarocks/bin:$HOME/.local/bin "$path[@]")
+# path=($HOME/.local/bin "$path[@]")
 
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export WORKON_HOME=$HOME/.virtualenvs
@@ -28,6 +28,7 @@ antigen bundles <<EOBUNDLES
   git
   github
   history-substring-search
+  mix-fast
   npm
   pip
   rails
@@ -76,10 +77,10 @@ export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 # $+commands[subl] && export EDITOR='subl -w'
 export EDITOR='emacsclient -t'
 
-if ! [[ $LUA_PATH =~ luarocks ]]; then
-  export LUA_PATH="$HOME/.luarocks/share/lua/5.2/?.lua;$(lua -e 'print(package.path)')"
-  export LUA_CPATH="$HOME/.luarocks/lib/lua/5.2/?.so;$(lua -e 'print(package.path)')"
-fi
+# if ! [[ $LUA_PATH =~ luarocks ]]; then
+#   export LUA_PATH="$HOME/.luarocks/share/lua/5.2/?.lua;$(lua -e 'print(package.path)')"
+#   export LUA_CPATH="$HOME/.luarocks/lib/lua/5.2/?.so;$(lua -e 'print(package.cpath)')"
+# fi
 
 # Why? Why not? :-)
 alias fucking=sudo
@@ -91,3 +92,9 @@ unalias ag # :/
 [ -s "/home/itsbth/.dnx/dnvm/dnvm.sh" ] && . "/home/itsbth/.dnx/dnvm/dnvm.sh" # Load dnvm
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+if [[ -d "$HOME/.pyenv/" ]]; then
+    path=($HOME/.pyenv/bin "$path[@]")
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi

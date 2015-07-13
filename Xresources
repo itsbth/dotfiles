@@ -1,6 +1,11 @@
+Xft.hinting: true 
+Xft.hintstyle: hintfull 
+Xft.antialias: rgba 
+Xft.rgba: rgb
+
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 ! URxvt*depth: bitdepth
-URxvt.depth: 32
+URxvt*depth: 32
 
 ! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some
 ! URxvt*buffered: boolean
@@ -70,10 +75,9 @@ URxvt.depth: 32
 
 ! Select the fonts to be used. This is a comma separated list of font names that
 ! URxvt*font: fontlist
-URxvt.font: xft:Source Code Pro for Powerline:style=Regular
+! URxvt*font: xft:Sauce Code Powerline:style=Regular
 
-! URxvt*boldFont: fontlist
-URxvt.boldFont: xft:Source Code Pro for Powerline:style=Bold
+URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Symbola:pixelsize=13:antialias=true:hinting=true
 
 ! 
 ! URxvt*italicFont: fontlist
@@ -110,14 +114,14 @@ URxvt.boldFont: xft:Source Code Pro for Powerline:style=Bold
 
 ! Set scrollbar style to rxvt, plain, next or xterm. plain is the authors
 ! URxvt*scrollstyle: mode
-URxvt.scrollstyle: plain
+URxvt*scrollstyle: plain
 
 ! Set the scrollbar width in pixels.
 ! URxvt*thickness: number
 
 ! True: enable the scrollbar [default]; option -sb. False: disable the scrollbar;
 ! URxvt*scrollBar: boolean
-URxvt.scrollBar: false
+URxvt*scrollBar: false
 
 ! True: place the scrollbar on the right of the window; option -sr.  False: place
 ! URxvt*scrollBar_right: boolean
@@ -292,33 +296,33 @@ URxvt.scrollBar: false
 #define base0E #cc99cc
 #define base0F #d27b53
 
-*.foreground:   base05
-*.background:   base00
-*.cursorColor:  base05
+*foreground:   base05
+*background:   base00
+*cursorColor:  base05
 
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
 
-*.color8:       base03
-*.color9:       base08
-*.color10:      base0B
-*.color11:      base0A
-*.color12:      base0D
-*.color13:      base0E
-*.color14:      base0C
-*.color15:      base07
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
 
 ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
 ! use 'shell' template to set these if necessary
-*.color16:      base09
-*.color17:      base0F
-*.color18:      base01
-*.color19:      base02
-*.color20:      base04
-*.color21:      base06
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06
