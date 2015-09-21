@@ -61,6 +61,9 @@
      typescript
 
      extra-langs
+
+     ;; Private packages
+     elm
      )
    ;; A list of additional packages.
    dotspacemacs-additional-packages '(editorconfig)

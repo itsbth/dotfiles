@@ -3,7 +3,7 @@
 # avoid duplicates in PATH, add stuff
 # XXX: symlink everything to ~/bin?
 typeset -U path
-# path=($HOME/.local/bin "$path[@]")
+path=($HOME/go/bin $HOME/.local/bin "$path[@]")
 
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export WORKON_HOME=$HOME/.virtualenvs
@@ -13,24 +13,35 @@ source $HOME/.antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
+  adb
+  atom
   autojump
+  aws
   bgnotify
   bower
   bundler
   cabal
   cake
+  catimg
   coffee
   debian
+  django
+  docker-compose
   docker
+  emacs
   extract
   fabric
   gem
   git
   github
+  golang
   history-substring-search
   mix-fast
   npm
+  nvm
   pip
+  postgres
+  pyenv
   rails
   redis-cli
   rvm
@@ -39,7 +50,6 @@ antigen bundles <<EOBUNDLES
   screen
   sublime
   tmux
-  virtualenvwrapper
 
   zsh-users/zsh-syntax-highlighting
 
@@ -98,3 +108,5 @@ if [[ -d "$HOME/.pyenv/" ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+
+export GOPATH=$HOME/go
