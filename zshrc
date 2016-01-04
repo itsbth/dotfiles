@@ -14,9 +14,10 @@ antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
   adb
-  atom
   autojump
+  autopep8
   aws
+  battery
   bgnotify
   bower
   bundler
@@ -24,6 +25,7 @@ antigen bundles <<EOBUNDLES
   cake
   catimg
   coffee
+  colored-man-pages
   debian
   django
   docker-compose
@@ -36,6 +38,7 @@ antigen bundles <<EOBUNDLES
   github
   golang
   history-substring-search
+  lein
   mix-fast
   npm
   nvm
@@ -45,10 +48,13 @@ antigen bundles <<EOBUNDLES
   rails
   redis-cli
   rvm
+  # safe-paste
   sbt
   scala
   screen
+  stack
   sublime
+  sudo
   tmux
 
   zsh-users/zsh-syntax-highlighting

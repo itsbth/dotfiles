@@ -41,27 +41,38 @@
      version-control
 
      ;; Languages
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
      clojure
      csharp
      django
      emacs-lisp
      elixir
+     elm
      erlang
      fsharp
      go
+     (haskell :variables
+              haskell-enable-ghc-mod-support t
+              ;; haskell-enable-ghci-ng-support t
+              haskell-enable-shm-support t)
      html
      javascript
      lua
      markdown
+     nim
      php
      python
+     racket
      react
      ruby
      ruby-on-rails
+     rust
      scala
      shell-scripts
      sql
      typescript
+     yaml
 
      extra-langs
 
@@ -71,7 +82,7 @@
    ;; A list of additional packages.
    dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(php-extras)
+   ;; dotspacemacs-excluded-packages '(php-extras)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
@@ -180,15 +191,20 @@ before layers configuration."
    )
   ;; User initialization goes here
   ;; (set-face-attribute 'default nil :font "Source Code Pro Medium-13")
+  ;; (autoload 'haskell-indentation-enable-show-indentations "haskell-indentation")
+  ;; (autoload 'haskell-indentation-disable-show-indentations "haskell-indentation")
   )
+
+;; (defun dotspacemacs/user-init ()
+;;   ;; (add-to-list 'exec-path "~/.cabal/bin/")
+;;   )
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (setq powerline-default-separator 'arrow-fade)
-  (setq clojure-enable-fancify-symbols t)
-)
+  (setq clojure-enable-fancify-symbols t))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -203,6 +219,15 @@ layers configuration."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(js2-basic-offset 2)
+ '(js2-strict-trailing-comma-warning nil)
  '(magit-use-overlays nil)
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
