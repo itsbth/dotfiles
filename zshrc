@@ -116,4 +116,4 @@ if [[ -d "$HOME/.pyenv/" ]]; then
 fi
 
 [ -s $HOME/go ] && export GOPATH=$HOME/go
-[ -s $HOME/Code/rust] && export RUST_SRC_PATH=$HOME/Code/rust
+[ -s $HOME/Code/rust ] && export RUST_SRC_PATH=$HOME/Code/rust
