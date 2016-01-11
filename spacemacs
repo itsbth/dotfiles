@@ -25,6 +25,7 @@
      emoji
      git
      github
+     ibuffer
      markdown
      (org :variables
           org-enable-github-support t)
@@ -199,7 +200,7 @@ before layers configuration."
 ;;   ;; (add-to-list 'exec-path "~/.cabal/bin/")
 ;;   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."

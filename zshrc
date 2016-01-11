@@ -115,4 +115,5 @@ if [[ -d "$HOME/.pyenv/" ]]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-export GOPATH=$HOME/go
+[ -s $HOME/go ] && export GOPATH=$HOME/go
+[ -s $HOME/Code/rust] && export RUST_SRC_PATH=$HOME/Code/rust
