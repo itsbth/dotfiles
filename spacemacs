@@ -16,7 +16,6 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
-     ansible
      auto-completion
      better-defaults
      chrome
@@ -29,7 +28,7 @@
      markdown
      (org :variables
           org-enable-github-support t)
-     perspectives
+     ranger
      restclient
      semantic
      shell
@@ -42,6 +41,7 @@
      version-control
 
      ;; Languages
+     ansible
      (c-c++ :variables
             c-c++-enable-clang-support t)
      clojure
@@ -78,7 +78,7 @@
      extra-langs
 
      ;; Private packages
-     elm
+     ;; elm
      )
    ;; A list of additional packages.
    dotspacemacs-additional-packages '(editorconfig)
@@ -116,7 +116,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
+   dotspacemacs-themes '(sanityinc-tomorrow-eighties
+                         monokai
                          solarized-light
                          solarized-dark
                          leuven
@@ -126,7 +127,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 22
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -196,9 +197,8 @@ before layers configuration."
   ;; (autoload 'haskell-indentation-disable-show-indentations "haskell-indentation")
   )
 
-;; (defun dotspacemacs/user-init ()
-;;   ;; (add-to-list 'exec-path "~/.cabal/bin/")
-;;   )
+(defun dotspacemacs/user-init ()
+  (setq-default rust-enable-racer t))
 
 (defun dotspacemacs/user-config ()
   "Configuration function.
@@ -229,6 +229,5 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))

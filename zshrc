@@ -65,7 +65,6 @@ antigen bundles <<EOBUNDLES
   simonwhitaker/gibo gibo-completion.zsh
   djui/alias-tips
 
-  tarruda/zsh-autosuggestions
   supercrabtree/k
 EOBUNDLES
 
@@ -101,7 +100,10 @@ export EDITOR='emacsclient -t'
 # Why? Why not? :-)
 alias fucking=sudo
 alias :q=exit
+alias :e=e
+alias fig=docker-compose
 unalias ag # :/
+compdef -d ag
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Who stole this?
 
@@ -116,4 +118,6 @@ if [[ -d "$HOME/.pyenv/" ]]; then
 fi
 
 [ -s $HOME/go ] && export GOPATH=$HOME/go
-[ -s $HOME/Code/rust ] && export RUST_SRC_PATH=$HOME/Code/rust
+[ -s $HOME/Code/rust ] && export RUST_SRC_PATH=$HOME/Code/rust/src
+[ -s $HOME/.multirust ] && export PATH="$HOME/.multirust/toolchains/stable/cargo/bin:$PATH"
+eval $(thefuck --alias)
