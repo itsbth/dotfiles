@@ -4,3 +4,12 @@
 [submodule "emacs.d"]
 	path = emacs.d
 	url = git://github.com/syl20bnr/spacemacs.git
+[submodule "nvm"]
+	path = nvm
+	url = git://github.com/creationix/nvm.git
+[submodule "pyenv"]
+	path = pyenv
+	url = git://github.com/yyuu/pyenv.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = git://github.com/tmux-plugins/tpm.git
