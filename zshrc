@@ -3,7 +3,7 @@
 # avoid duplicates in PATH, add stuff
 # XXX: symlink everything to ~/bin?
 typeset -U path
-path=($HOME/go/bin $HOME/.local/bin "$path[@]")
+path=($HOME/.local/bin "$path[@]")
 
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export WORKON_HOME=$HOME/.virtualenvs
@@ -97,15 +97,23 @@ export EDITOR='emacsclient -t'
 #   export LUA_CPATH="$HOME/.luarocks/lib/lua/5.2/?.so;$(lua -e 'print(package.cpath)')"
 # fi
 
+gsize() {
+    for f in "$@"; do
+        local before=$(wc -c < $f)
+        local after=$(gzip -c $f | wc -c)
+        local percentage=$(bc <<< "scale=2; ($after * 100 / $before)")
+        echo "$f: $before -> $after ($percentage%)"
+    done
+}
+
 # Why? Why not? :-)
 alias fucking=sudo
 alias :q=exit
 alias :e=e
 alias fig=docker-compose
+
 unalias ag # :/
 compdef -d ag
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Who stole this?
 
 [ -s "/home/itsbth/.dnx/dnvm/dnvm.sh" ] && . "/home/itsbth/.dnx/dnvm/dnvm.sh" # Load dnvm
 
@@ -117,7 +125,7 @@ if [[ -d "$HOME/.pyenv/" ]]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-[ -s $HOME/go ] && export GOPATH=$HOME/go
+[ -s $HOME/Code/Go ] && export GOPATH=$HOME/Code/Go
 [ -s $HOME/Code/rust ] && export RUST_SRC_PATH=$HOME/Code/rust/src
 [ -s $HOME/.multirust ] && export PATH="$HOME/.multirust/toolchains/stable/cargo/bin:$PATH"
 eval $(thefuck --alias)
