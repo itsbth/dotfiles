@@ -10,6 +10,10 @@ export WORKON_HOME=$HOME/.virtualenvs
 
 source $HOME/.zplug/init.zsh
 
+zplug "zplug/zplug"
+
+zplug "lib/*", from:oh-my-zsh
+
 zplug "plugins/adb", from:oh-my-zsh
 zplug "plugins/autojump", from:oh-my-zsh
 zplug "plugins/autopep8", from:oh-my-zsh
@@ -64,10 +68,14 @@ zplug "djui/alias-tips"
 
 zplug "supercrabtree/k"
 
+if ! zplug check; then
+    zplug install
+fi
+
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # antigen apply
-zplug load
+zplug load --verbose
 
 # zle-line-init() {
 #     zle autosuggest-start
