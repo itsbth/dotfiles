@@ -1,0 +1,20 @@
+! Base16 IR Black
+! Scheme: Timothée Poisot (http://timotheepoisot.fr)
+
+#define base00 #000000
+#define base01 #242422
+#define base02 #484844
+#define base03 #6c6c66
+#define base04 #918f88
+#define base05 #b5b3aa
+#define base06 #d9d7cc
+#define base07 #fdfbee
+#define base08 #ff6c60
+#define base09 #e9c062
+#define base0A #ffffb6
+#define base0B #a8ff60
+#define base0C #c6c5fe
+#define base0D #96cbfe
+#define base0E #ff73fd
+#define base0F #b18a3d
+

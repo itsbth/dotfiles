@@ -77,7 +77,7 @@ URxvt*depth: 32
 ! URxvt*font: fontlist
 ! URxvt*font: xft:Sauce Code Powerline:style=Regular
 
-URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Symbola:pixelsize=13:antialias=true:hinting=true
+URxvt*font: xft:Fira\ Code:pixelsize=20:antialias=true:hinting=true,xft:Symbola:pixelsize=20:antialias=true:hinting=true
 
 ! 
 ! URxvt*italicFont: fontlist
@@ -326,3 +326,13 @@ URxvt*scrollBar: false
 *color19:      base02
 *color20:      base04
 *color21:      base06
+
+! Rofi
+rofi.color-enabled: true
+rofi.color-window: #1f1f1f, #1f1f1f, #1f1f1f
+rofi.color-normal: #1f1f1f, #00a7ff, #1f1f1f, #00a7ff, #ffffff
+rofi.color-active: #1f1f1f, #00a7ff, #1f1f1f, #00a7ff, #ffffff
+rofi.color-urgent: #1f1f1f, #dc322f, #1f1f1f, #dc322f, #ffffff
+
+
+#include ".Xresources.d/st"

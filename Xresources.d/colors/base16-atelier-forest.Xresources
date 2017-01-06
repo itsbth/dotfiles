@@ -1,0 +1,20 @@
+! Base16 Atelier Forest
+! Scheme: Bram de Haan (http://atelierbramdehaan.nl)
+
+#define base00 #1b1918
+#define base01 #2c2421
+#define base02 #68615e
+#define base03 #766e6b
+#define base04 #9c9491
+#define base05 #a8a19f
+#define base06 #e6e2e0
+#define base07 #f1efee
+#define base08 #f22c40
+#define base09 #df5320
+#define base0A #c38418
+#define base0B #7b9726
+#define base0C #3d97b8
+#define base0D #407ee7
+#define base0E #6666ea
+#define base0F #c33ff3
+

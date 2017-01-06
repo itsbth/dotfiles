@@ -1,0 +1,20 @@
+! Base16 Unikitty Light
+! Scheme: Josh W Lewis (@joshwlewis)
+
+#define base00 #ffffff
+#define base01 #e1e1e2
+#define base02 #c4c3c5
+#define base03 #a7a5a8
+#define base04 #89878b
+#define base05 #6c696e
+#define base06 #4f4b51
+#define base07 #322d34
+#define base08 #d8137f
+#define base09 #d65407
+#define base0A #dc8a0e
+#define base0B #17ad98
+#define base0C #149bda
+#define base0D #775dff
+#define base0E #aa17e6
+#define base0F #e013d0
+

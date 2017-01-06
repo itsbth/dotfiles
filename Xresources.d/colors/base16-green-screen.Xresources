@@ -1,0 +1,20 @@
+! Base16 Green Screen
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #001100
+#define base01 #003300
+#define base02 #005500
+#define base03 #007700
+#define base04 #009900
+#define base05 #00bb00
+#define base06 #00dd00
+#define base07 #00ff00
+#define base08 #007700
+#define base09 #009900
+#define base0A #007700
+#define base0B #00bb00
+#define base0C #005500
+#define base0D #009900
+#define base0E #00bb00
+#define base0F #005500
+

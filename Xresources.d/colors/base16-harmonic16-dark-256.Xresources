@@ -1,0 +1,20 @@
+! Base16 Harmonic16 Dark
+! Scheme: Jannik Siebert (https://github.com/janniks)
+
+#define base00 #0b1c2c
+#define base01 #223b54
+#define base02 #405c79
+#define base03 #627e99
+#define base04 #aabcce
+#define base05 #cbd6e2
+#define base06 #e5ebf1
+#define base07 #f7f9fb
+#define base08 #bf8b56
+#define base09 #bfbf56
+#define base0A #8bbf56
+#define base0B #56bf8b
+#define base0C #568bbf
+#define base0D #8b56bf
+#define base0E #bf568b
+#define base0F #bf5656
+

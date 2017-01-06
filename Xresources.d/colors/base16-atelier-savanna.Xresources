@@ -1,0 +1,20 @@
+! Base16 Atelier Savanna
+! Scheme: Bram de Haan (http://atelierbramdehaan.nl)
+
+#define base00 #171c19
+#define base01 #232a25
+#define base02 #526057
+#define base03 #5f6d64
+#define base04 #78877d
+#define base05 #87928a
+#define base06 #dfe7e2
+#define base07 #ecf4ee
+#define base08 #b16139
+#define base09 #9f713c
+#define base0A #a07e3b
+#define base0B #489963
+#define base0C #1c9aa0
+#define base0D #478c90
+#define base0E #55859b
+#define base0F #867469
+

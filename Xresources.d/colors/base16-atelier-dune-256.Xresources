@@ -1,0 +1,20 @@
+! Base16 Atelier Dune
+! Scheme: Bram de Haan (http://atelierbramdehaan.nl)
+
+#define base00 #20201d
+#define base01 #292824
+#define base02 #6e6b5e
+#define base03 #7d7a68
+#define base04 #999580
+#define base05 #a6a28c
+#define base06 #e8e4cf
+#define base07 #fefbec
+#define base08 #d73737
+#define base09 #b65611
+#define base0A #ae9513
+#define base0B #60ac39
+#define base0C #1fad83
+#define base0D #6684e1
+#define base0E #b854d4
+#define base0F #d43552
+

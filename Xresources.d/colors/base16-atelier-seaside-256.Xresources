@@ -1,0 +1,20 @@
+! Base16 Atelier Seaside
+! Scheme: Bram de Haan (http://atelierbramdehaan.nl)
+
+#define base00 #131513
+#define base01 #242924
+#define base02 #5e6e5e
+#define base03 #687d68
+#define base04 #809980
+#define base05 #8ca68c
+#define base06 #cfe8cf
+#define base07 #f4fbf4
+#define base08 #e6193c
+#define base09 #87711d
+#define base0A #98981b
+#define base0B #29a329
+#define base0C #1999b3
+#define base0D #3d62f5
+#define base0E #ad2bee
+#define base0F #e619c3
+
