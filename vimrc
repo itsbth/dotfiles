@@ -3,6 +3,9 @@ filetype off                   " required!
 
 let mapleader=' '
 
+let g:python_host_prog='/home/itsbth/.pyenv/versions/2.7.11/bin/python'
+let g:python3_host_prog='/home/itsbth/.pyenv/versions/3.5.1/bin/python3'
+
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
@@ -15,7 +18,7 @@ Plugin 'tpope/vim-repeat'
 
 
 Plugin 'airblade/vim-gitgutter'
-Plugin 'amdt/vim-niji'
+" Plugin 'amdt/vim-niji'
 Plugin 'AutoClose'
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
@@ -71,9 +74,9 @@ filetype plugin indent on     " required!
 
 " powerline
 set laststatus=2
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" python from powerline.vim import setup as powerline_setup
+" python powerline_setup()
+" python del powerline_setup
 
 set t_Co=256
 " colorscheme Tomorrow-Night-Bright
@@ -121,7 +124,7 @@ if has("gui_running")
     set guioptions-=r
     set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 10
     set background=dark
-    colorscheme base16-default
+    colorscheme base16-eighties
   endif
 endif
 
