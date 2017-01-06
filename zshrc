@@ -1,8 +1,8 @@
 # -*- mode: sh; -*-
 # Customize to your needs...
 # avoid duplicates in PATH, add stuff
-# XXX: symlink everything to ~/bin?
 typeset -U path
+# XXX: symlink everything to ~/bin?
 path=($HOME/.local/bin "$path[@]")
 
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
@@ -10,7 +10,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 
 source $HOME/.zplug/init.zsh
 
-zplug "zplug/zplug"
+# zplug "zplug/zplug"
 
 zplug "lib/*", from:oh-my-zsh
 
@@ -22,7 +22,7 @@ zplug "plugins/battery", from:oh-my-zsh
 zplug "plugins/bgnotify", from:oh-my-zsh
 zplug "plugins/bower", from:oh-my-zsh
 zplug "plugins/bundler", from:oh-my-zsh
-zplug "plugins/cabal", from:oh-my-zsh
+# zplug "plugins/cabal", from:oh-my-zsh
 zplug "plugins/cake", from:oh-my-zsh
 zplug "plugins/catimg", from:oh-my-zsh
 zplug "plugins/coffee", from:oh-my-zsh
@@ -46,7 +46,7 @@ zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/postgres", from:oh-my-zsh
 zplug "plugins/pyenv", from:oh-my-zsh
-zplug "plugins/rails", from:oh-my-zsh
+# zplug "plugins/rails", from:oh-my-zsh
 zplug "plugins/redis-cli", from:oh-my-zsh
 zplug "plugins/rvm", from:oh-my-zsh
 # zplug "plugins/safe-paste", from:oh-my-zsh
@@ -58,15 +58,16 @@ zplug "plugins/sublime", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "mafredri/zsh-async"
-zplug "sindresorhus/pure"
+zplug "sindresorhus/pure", defer:1
 
 zplug "simonwhitaker/gibo", use:gibo-completion.zsh
 zplug "djui/alias-tips"
 
 zplug "supercrabtree/k"
+zplug "rupa/z", use:z.sh
 
 if ! zplug check; then
     zplug install
@@ -74,7 +75,8 @@ fi
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# antigen apply
+# XXX: Ugly hack
+export ZSH=$HOME/.zplug/repos/robbyrussell/oh-my-zsh
 zplug load --verbose
 
 # zle-line-init() {
@@ -117,6 +119,7 @@ alias fucking=sudo
 alias :q=exit
 alias :e=e
 alias fig=docker-compose
+alias snek=python3
 
 unalias ag # :/
 compdef -d ag
@@ -129,6 +132,9 @@ if [[ -d "$HOME/.pyenv/" ]]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-[ -s $HOME/Code/Go ] && export GOPATH=$HOME/Code/Go
+[ -s $HOME/Code/Go ] && export GOPATH=$HOME/Code/Go && path+=$GOPATH/bin
+[ -s $HOME/Tools/go ] && export GOROOT=$HOME/Tools/go
 [ -s $HOME/Code/rust ] && export RUST_SRC_PATH=$HOME/Code/rust/src
 eval $(thefuck --alias)
+
+export PATH="$HOME/.yarn/bin:$PATH"

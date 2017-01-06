@@ -22,3 +22,6 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source /home/itsbth/.nix-profile/etc/profile.d/nix.sh # enable nix
+
+export PATH="$HOME/.cargo/bin:$PATH"
