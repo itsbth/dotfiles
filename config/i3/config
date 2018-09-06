@@ -30,7 +30,7 @@ font pango:Fira Code 7
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st.glass
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -172,7 +172,7 @@ bindsym Escape mode "default"
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+q exec --no-startup-id rofi -show run -width 100 -padding 600 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
+bindsym $mod+q exec --no-startup-id rofi -show run
 bindsym $mod+t exec --no-startup-id rofi -show 
 bindsym $mod+Ctrl+l exec ~/bin/lockify
 bindsym $mod+c scratchpad show
@@ -194,6 +194,7 @@ bar {
   # status_command pyenv exec /home/itsbth/Scratch/bumblebee-status/bumblebee-status -m nic disk:/ cpu memory battery date time pasink pasource dnf -p time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t solarized-powerline
   tray_output primary
   position top
+  mode hide
   colors {
     background $bg-color
     separator #757575
@@ -209,24 +210,30 @@ for_window [class="^.*"] border pixel 2
 gaps inner 15
 smart_gaps on
 
+smart_borders on
+
 #applications
 exec chromium-browser
 exec spotify --force-device-scale-factor=2
-exec ~/bin/st.glass -c 'st.dropdown'
+exec ~/bin/st -c 'st.dropdown'
 
 #utils
-exec --no-startup-id compton -f
-exec --no-startup-id xautolock -time 15 -locker /home/itsbth/bin/lockify
+exec --no-startup-id compton -b
+exec --no-startup-id xss-lock -- /home/itsbth/bin/lockify
 
 #caps -> esc
 exec --no-startup-id xmodmap -e "clear lock"
 exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
+exec --no-startup-id xcape
+exec --no-startup-id bash /home/itsbth/.config/wpg/wp_init.sh
 
 assign [class="Atom"] workspace $ws2
 assign [class="Code"] workspace $ws2
-assign [class="chromium-browser"] workspace $ws3
-assign [class="Firefox"] workspace $ws4
+assign [class="Chromium-browser"] workspace $ws3
+assign [class="Nightly"] workspace $ws4 # ff nightly
 assign [class="Thunar"] workspace $ws5
-for_window [class="(?i)spotify"] move to workspace $ws10
+assign [class="Nautilus"] workspace $ws5
+assign [class="(?i)spotify"] workspace $ws10
+# for_window [class="(?i)spotify"] move to workspace $ws10
 
-for_window [class="st.dropdown"] move scratchpad, resize set 3000 500, move absolute position 100 0
+for_window [class="st.dropdown"] move scratchpad, resize set 3200 512, move absolute position 0 0
