@@ -38,7 +38,7 @@ zplugin light sindresorhus/pure
 #zplugin snippet OMZ::lib/git.zsh
 #zplugin light therealklanni/purity
 
-zplugin ice from"gh-r" bpkick"*linux-amd64*" pick"hub-*/bin/hub" as"command"
+zplugin ice from"gh-r" bpick"*linux-amd64*" pick"hub-*/bin/hub" as"command"
 zplugin light 'github/hub'
 
 zplugin ice from"gh-r" as"command" mv"hivemind-* -> hivemind"
