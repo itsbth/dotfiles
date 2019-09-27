@@ -77,6 +77,10 @@ zplugin light zdharma/zplugin-crasis
 
 eval $(thefuck --alias)
 
-if [ $TERM = xterm-kitty ]; then
-	kitty +kitten icat $HOME/Pictures/pexip-logo-hvit.svg
+if [ "$(ps -p $PPID -o comm=)" != zsh ]; then
+	if [ $TERM = xterm-kitty ]; then
+		kitty +kitten icat $HOME/Pictures/pexip-logo-hvit.svg
+	elif [[ $+commands[toilet] && $+commands[lolcat] ]]; then
+	    toilet -f bigmono12 pexip | lolcat -t
+	fi
 fi

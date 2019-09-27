@@ -4,3 +4,5 @@ endif
 
 runtime plugins.vim
 
+runtime startify.vim
+" runtime lightbar.vim

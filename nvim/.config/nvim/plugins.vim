@@ -7,6 +7,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'itchyny/lightline.vim'
 
+Plug 'mhinz/vim-startify'
+
 Plug 'tpope/vim-fugitive'
 
 Plug '~/.zplugin/plugins/junegunn---fzf/' " not the greatest way to load this
@@ -23,5 +25,9 @@ Plug 'flazz/vim-colorschemes'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+" langs
+" ts
+Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
