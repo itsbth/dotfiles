@@ -2,7 +2,6 @@ typeset -aUx path
 fpath=($HOME/.zsh $fpath)
 export path=($HOME/.local/bin /snap/bin "$path[@]")
 alias dotstow='stow -d $HOME/repos/github.com/itsbth/dotfiles -t $HOME'
-alias git=hub
 alias lpass-fzf="lpass show -c --password \$(lpass ls  | fzf | awk '{print \$(NF)}' | sed 's/\]//g')"
 
 take() { mkdir -p "$1" && cd "$1" }
@@ -87,7 +86,7 @@ eval $(thefuck --alias)
 
 ktheme() {
 	if [ "$1" = random ]; then
-		local theme="$(find $HOME/repos/github.com/dexpota/kitty-themes/ -type f | shuf -n 1)"
+		local theme="$(find $HOME/repos/github.com/dexpota/kitty-themes/ -not -path '*/\.*' -type f | shuf -n 1)"
 		kitty @ set-colors -a -c "$theme"
 	else
 		kitty @ set-colors -a -c "$HOME/repos/github.com/dexpota/kitty-themes/themes/$1.conf"
@@ -103,7 +102,7 @@ compdef _ktheme ktheme
 
 # try (and fail) to detect nested shells
 if [ "$(ps -p $PPID -o comm=)" != zsh ]; then
-	if [ $TERM = xterm-kitty ]; then
+	if [[ $TERM = xterm-kitty && -f $HOME/Pictures/pexip-logo-hvit.svg ]]; then
 		kitty +kitten icat $HOME/Pictures/pexip-logo-hvit.svg
 	elif [[ $+commands[toilet] && $+commands[lolcat] ]]; then
 	    toilet -f bigmono12 pexip | lolcat -t
@@ -126,3 +125,9 @@ export GOPATH=$HOME/gopath
 path+=/usr/local/go/bin/
 path+=$GOPATH/bin/
 
+[[ $+commands[hub] ]] && eval "$(hub alias -s)"
+hash -d pexip=$HOME/repos/github.com/pexip videxio=$HOME/repos/github.com/videxio me=$HOME/repos/github.com/itsbth
+
+# Wasmer
+export WASMER_DIR="/home/itsbth/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
