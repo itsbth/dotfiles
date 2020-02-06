@@ -10,14 +10,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# zstyle for prezto
+zstyle ':prezto:module:terminal' auto-title 'yes'
+
 ### Added by Zplugin's installer
 source '/home/itsbth/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
-
-# zstyle for prezto
-zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # zplugin start
 
@@ -75,7 +75,7 @@ zplugin snippet PZT::modules/ssh/init.zsh
 #zplugin snippet PZT::modules/history-substring-search/init.zsh
 
 zplugin ice from"gh-r" bpick"*linux_amd64*" pick"ghq_*/ghq" as"command"
-zplugin light motemen/ghq
+zplugin light x-motemen/ghq
 
 zplugin light zdharma/zui
 zplugin light zdharma/zplugin-crasis
@@ -102,7 +102,7 @@ compdef _ktheme ktheme
 
 # try (and fail) to detect nested shells
 if [ "$(ps -p $PPID -o comm=)" != zsh ]; then
-	if [[ $TERM = xterm-kitty && -f $HOME/Pictures/pexip-logo-hvit.svg ]]; then
+	if [[ $TERM = xterm-kitty-not && -f $HOME/Pictures/pexip-logo-hvit.svg ]]; then
 		kitty +kitten icat $HOME/Pictures/pexip-logo-hvit.svg
 	elif [[ $+commands[toilet] && $+commands[lolcat] ]]; then
 	    toilet -f bigmono12 pexip | lolcat -t
@@ -131,3 +131,7 @@ hash -d pexip=$HOME/repos/github.com/pexip videxio=$HOME/repos/github.com/videxi
 # Wasmer
 export WASMER_DIR="/home/itsbth/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
