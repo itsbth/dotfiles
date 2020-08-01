@@ -184,8 +184,8 @@ it_time_section "motd"
 
 it_time_section "starship"
 
-if [ -f "$HOME/.cargo/bin/starship" ]; then
-	if [[ "$HOME/.cargo/bin/starship" -nt "$ZSH_CACHE_DIR/starship_init.zsh" ]]; then
+if [[ $+commands[starship] ]]; then
+	if [[ $commands[starship] -nt "$ZSH_CACHE_DIR/starship_init.zsh" ]]; then
 		starship init zsh --print-full-init >! "$ZSH_CACHE_DIR/starship_init.zsh"
 	fi
 	source "$ZSH_CACHE_DIR/starship_init.zsh"
