@@ -27,7 +27,7 @@ it_time_section() {
 
 it_time_section "load zinit module"
 
-module_path+=( "/home/itsbth/.zinit/bin/zmodules/Src" )
+module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
 zmodload zdharma/zplugin
 
 it_time_section "misc header"
@@ -64,7 +64,7 @@ skip_global_compinit=1
 it_time_section "zinit load"
 
 ### Added by Zplugin's installer
-source '/home/itsbth/.zinit/bin/zinit.zsh'
+source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zplugin's installer chunk
@@ -175,27 +175,29 @@ it_time_section "motd"
 
 () {
 	local motd="$1"
-	local len="$(jq length $1)"
+	local len="$(jq length $motd)"
 	# not quite random, but good enough
 	local rand=$(( RANDOM % len ))
-	jq -r ".[$rand] | \"\\(.name): \\(.desc)\"" "$1"
+	jq -r ".[$rand] | \"\\(.name): \\(.desc)\"" "$motd"
 } "$HOME/.motd-name.json"
 
 
 it_time_section "starship"
 
 if [ -f "$HOME/.cargo/bin/starship" ]; then
-	starship init zsh --print-full-init >! "$ZSH_CACHE_DIR/starship_init.zsh"
+	if [[ "$HOME/.cargo/bin/starship" -nt "$ZSH_CACHE_DIR/starship_init.zsh" ]]; then
+		starship init zsh --print-full-init >! "$ZSH_CACHE_DIR/starship_init.zsh"
+	fi
 	source "$ZSH_CACHE_DIR/starship_init.zsh"
 fi
 
 it_time_section "gcloud sdk"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/itsbth/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/home/itsbth/tools/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/tools/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/tools/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/itsbth/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/itsbth/tools/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/tools/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/tools/google-cloud-sdk/completion.zsh.inc"; fi
 
 it_time_section "misc path adjustments"
 # perl 6
@@ -214,7 +216,7 @@ it_time_section ""
 hash -d pexip=$HOME/repos/github.com/pexip videxio=$HOME/repos/github.com/videxio me=$HOME/repos/github.com/itsbth
 
 # Wasmer
-export WASMER_DIR="/home/itsbth/.wasmer"
+export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 export WASMTIME_HOME="$HOME/.wasmtime"
@@ -226,6 +228,7 @@ if [[ -n "$ZSH_PROFILE_ZSHRC" ]]; then
 	exec 2>&3 3>&-
 fi
 
+zpcompinit; zpcdreplay
 
 # added by travis gem
-[ ! -s /home/itsbth/.travis/travis.sh ] || source /home/itsbth/.travis/travis.sh
+[ ! -s "$HOME/.travis/travis.sh" ] || source "$HOME/.travis/travis.sh"
