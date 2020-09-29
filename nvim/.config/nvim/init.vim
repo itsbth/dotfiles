@@ -6,15 +6,15 @@ endif
 runtime plugins.vim
 
 if exists('loaded_startify') 
-  runtime startify.vim
+  runtime plugins/startify.vim
 endif
 " runtime lightbar.vim
 " runtime plugin/coc.vim
 if exists('loaded_clap') 
-  runtime plugin/clap.vim
+  runtime plugins/clap.vim
 endif
 if exists('loaded_deoplete') 
-  runtime plugin/deoplete.vim
+  runtime plugins/deoplete.vim
 endif
 
 runtime hotkeys.vim
