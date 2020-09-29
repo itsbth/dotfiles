@@ -8,8 +8,12 @@ runtime plugins.vim
 if exists('loaded_startify') 
   runtime plugins/startify.vim
 endif
-" runtime lightbar.vim
-" runtime plugin/coc.vim
+if exists('loaded_lightbar')
+  runtime lightbar.vim
+endif
+if exists('loaded_coc')
+  runtime plugin/coc.vim
+endif
 if exists('loaded_clap') 
   runtime plugins/clap.vim
 endif
