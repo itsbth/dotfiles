@@ -5,19 +5,22 @@ endif
 
 runtime plugins.vim
 
-if exists('loaded_startify') 
+if has_key(g:plugs, 'vim-startify')
   runtime plugins/startify.vim
 endif
-if exists('loaded_lightbar')
-  runtime lightbar.vim
+if has_key(g:plugs, 'lightline.vim')
+  runtime plugins/lightline.vim
 endif
-if exists('loaded_coc')
+if has_key(g:plugs, 'vim-airline')
+  runtime plugins/airline.vim
+endif
+if has_key(g:plugs, 'coc.nvim')
   runtime plugin/coc.vim
 endif
-if exists('loaded_clap') 
+if has_key(g:plugs, 'vim-clap')
   runtime plugins/clap.vim
 endif
-if exists('loaded_deoplete') 
+if has_key(g:plugs, 'deoplete-nvim')
   runtime plugins/deoplete.vim
 endif
 

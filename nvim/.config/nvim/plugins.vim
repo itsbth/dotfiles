@@ -5,17 +5,23 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 
 Plug 'mhinz/vim-startify'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 Plug '~/.zinit/plugins/junegunn---fzf/' " not the greatest way to load this
 Plug 'junegunn/fzf.vim'
+
+" Buffer navigation
+Plug 'mildred/vim-bufmru'
+
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
