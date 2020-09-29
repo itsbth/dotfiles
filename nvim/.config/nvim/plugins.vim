@@ -28,6 +28,8 @@ Plug 'tmsvg/pear-tree'
 
 Plug 'w0rp/ale'
 
+Plug 'sbdchd/neoformat'
+
 " lsp providers
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
