@@ -12,6 +12,8 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
+Plug 'airblade/vim-gitgutter'
+
 Plug '~/.zinit/plugins/junegunn---fzf/' " not the greatest way to load this
 Plug 'junegunn/fzf.vim'
 
@@ -63,5 +65,11 @@ Plug 'Quramy/tsuquyomi'
 
 " raku
 Plug 'Raku/vim-raku'
+
+" nginx config
+Plug 'chr4/nginx.vim'
+
+" reason
+Plug 'reasonml-editor/vim-reason-plus'
 
 call plug#end()
