@@ -1,6 +1,11 @@
 call plug#begin()
 Plug 'tpope/vim-sensible'
 
+" fennel (lisp-variant) conf support
+Plug 'Olical/aniseed', { 'tag': 'v3.9.0' }
+Plug 'bakpakin/fennel.vim'
+Plug 'Olical/conjure'
+
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -27,6 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
 
 Plug 'farmergreg/vim-lastplace'
 
@@ -40,7 +46,7 @@ Plug 'sbdchd/neoformat'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " lsp (alt 2)
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp'
 
@@ -65,6 +71,11 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
 Plug 'liuchengxu/vista.vim'
 
+Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
+
+" better syntax highlighting (nvim 0.5 nightly)
+Plug 'nvim-treesitter/nvim-treesitter'
+
 " langs
 " ts
 Plug 'HerringtonDarkholme/yats.vim'
@@ -79,5 +90,8 @@ Plug 'chr4/nginx.vim'
 
 " reason
 Plug 'reasonml-editor/vim-reason-plus'
+
+" jsonnet
+Plug 'google/vim-jsonnet'
 
 call plug#end()
