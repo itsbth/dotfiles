@@ -1,10 +1,11 @@
 (module dotfiles.plugins.nvim-lspconfig
-  {require {lsp nvim_lsp}})
+  {require {lsp lspconfig}})
 
 (def- providers
   [:gopls
    :rust_analyzer
-   :tsserver])
+   :tsserver
+   :pyls_ms])
 
 (each [_ provider (ipairs providers)]
   ((. lsp provider :setup)))

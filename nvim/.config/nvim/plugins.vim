@@ -2,7 +2,7 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 
 " fennel (lisp-variant) conf support
-Plug 'Olical/aniseed', { 'tag': 'v3.9.0' }
+Plug 'Olical/aniseed', { 'tag': 'v3.11.0' }
 Plug 'bakpakin/fennel.vim'
 Plug 'Olical/conjure'
 
@@ -13,13 +13,16 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 
+" start page
 Plug 'mhinz/vim-startify'
 
+" git and github support
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-" Plug 'airblade/vim-gitgutter'
-Plug 'mhinz/vim-signify'
+" changed lines in gutter
+Plug 'airblade/vim-gitgutter'
+" Plug 'mhinz/vim-signify'
 
 Plug '~/.zinit/plugins/junegunn---fzf/' " not the greatest way to load this
 Plug 'junegunn/fzf.vim'
@@ -30,16 +33,20 @@ Plug 'mildred/vim-bufmru'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise' " overlaps with pear-tree
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 
+" remember cursor position
 Plug 'farmergreg/vim-lastplace'
 
+" brace pairing(++)
 Plug 'tmsvg/pear-tree'
 
+" linting
 Plug 'w0rp/ale'
 
+" formatting
 Plug 'sbdchd/neoformat'
 
 " lsp providers
@@ -52,23 +59,26 @@ Plug 'Shougo/deoplete-lsp'
 
 Plug 'ervandew/supertab'
 
-
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'rafi/awesome-vim-colorschemes'
 
+" remember colourscheme
 Plug 'rojspencer/vim-colorminder'
 
+" snippety snip
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 
+" distraction-free editing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
+" LSP/tags viewer
 Plug 'liuchengxu/vista.vim'
 
 Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
