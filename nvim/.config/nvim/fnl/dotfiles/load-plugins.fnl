@@ -22,3 +22,4 @@
 (defn print-loaded-plugins []
   (each [_ plugin (ipairs loaded)]
     (print plugin)))
+

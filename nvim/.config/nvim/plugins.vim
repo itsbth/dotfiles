@@ -1,6 +1,8 @@
 call plug#begin()
 Plug 'tpope/vim-sensible'
 
+Plug 'tweekmonster/startuptime.vim'
+
 " fennel (lisp-variant) conf support
 Plug 'Olical/aniseed', { 'tag': 'v3.11.0' }
 Plug 'bakpakin/fennel.vim'
@@ -24,6 +26,9 @@ Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 " Plug 'mhinz/vim-signify'
 
+" Rainbow parentheses
+Plug 'kien/rainbow_parentheses.vim'
+
 Plug '~/.zinit/plugins/junegunn---fzf/' " not the greatest way to load this
 Plug 'junegunn/fzf.vim'
 
@@ -31,7 +36,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'mildred/vim-bufmru'
 
 
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-endwise' " overlaps with pear-tree
 Plug 'tpope/vim-unimpaired'
@@ -54,8 +60,12 @@ Plug 'sbdchd/neoformat'
 
 " lsp (alt 2)
 Plug 'neovim/nvim-lspconfig'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-lsp'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete-lsp'
+
+Plug 'nvim-lua/completion-nvim'
+
+Plug 'nvim-lua/lsp_extensions.nvim'
 
 Plug 'ervandew/supertab'
 
@@ -63,8 +73,11 @@ Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'rafi/awesome-vim-colorschemes'
 
+" briefly highlight yanked text
+Plug 'machakann/vim-highlightedyank'
+
 " remember colourscheme
-Plug 'rojspencer/vim-colorminder'
+" Plug 'rojspencer/vim-colorminder' " extremely slow for some reason
 
 " snippety snip
 Plug 'SirVer/ultisnips'
@@ -103,5 +116,8 @@ Plug 'reasonml-editor/vim-reason-plus'
 
 " jsonnet
 Plug 'google/vim-jsonnet'
+
+" hy(lang)
+Plug 'hylang/vim-hy'
 
 call plug#end()
