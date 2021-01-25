@@ -73,6 +73,10 @@ Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'rafi/awesome-vim-colorschemes'
 
+Plug 'tjdevries/colorbuddy.nvim'
+Plug 'rockerBOO/boo-colorscheme-nvim'
+Plug 'sainnhe/edge'
+
 " briefly highlight yanked text
 Plug 'machakann/vim-highlightedyank'
 
@@ -112,7 +116,7 @@ Plug 'Raku/vim-raku'
 Plug 'chr4/nginx.vim'
 
 " reason
-Plug 'reasonml-editor/vim-reason-plus'
+" Plug 'reasonml-editor/vim-reason-plus'
 
 " jsonnet
 Plug 'google/vim-jsonnet'

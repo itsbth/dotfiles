@@ -40,6 +40,8 @@ alias lpass-fzf="lpass show -c --password \$(lpass ls  | fzf | awk '{print \$(NF
 
 take() { mkdir -p "$1" && cd "$1" }
 
+export EDITOR="$(which nvim)"
+
 it_time_section "nvm"
 
 # export NVM_DIR="$HOME/.nvm"
@@ -192,6 +194,11 @@ if [[ $+commands[starship] ]]; then
 	source "$ZSH_CACHE_DIR/starship_init.zsh"
 fi
 
+it_time_section "kubectl completion"
+
+# ignore potential zwc error
+kubectl completion zsh | source /dev/stdin 2> /dev/null
+
 it_time_section "gcloud sdk"
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -204,9 +211,9 @@ it_time_section "misc path adjustments"
 # perl 6
 path=(~/.perl6/bin /opt/rakudo-pkg/bin /opt/rakudo-pkg/share/perl6/site/bin $path[@])
 # go
-export GOPATH=$HOME/gopath
-path+=/usr/local/go/bin/
-path+=$GOPATH/bin/
+export GOPATH=$HOME/go
+path+=/usr/local/go/bin
+path+=$GOPATH/bin
 
 it_time_section "hub"
 
@@ -233,3 +240,8 @@ zpcompinit; zpcdreplay
 
 # added by travis gem
 [ ! -s "$HOME/.travis/travis.sh" ] || source "$HOME/.travis/travis.sh"
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"
+complete -o nospace -C /home/itsbth/.local/bin/kustomize kustomize
+autoload -U +X bashcompinit && bashcompinit
