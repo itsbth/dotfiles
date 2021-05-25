@@ -11,11 +11,9 @@ set termguicolors
 runtime plugins.vim
 
 " colorscheme 1989
-colorscheme base16-gruvbox-dark-pale
+" colorscheme base16-gruvbox-dark-pale
+colorscheme edge
 
-if has_key(g:plugs, 'vim-startify')
-  runtime plugins/startify.vim
-endif
 if has_key(g:plugs, 'lightline.vim')
   runtime plugins/lightline.vim
 endif
@@ -38,5 +36,11 @@ runtime rust.vim
 runtime go.vim
 
 lua require('aniseed.env').init()
+
+" checktime on resume
+augroup resume
+  au!
+  autocmd BufEnter,FocusGained * checktime
+augroup end
 
 " plug#begin " topgrade vim-plug heuristic is bad

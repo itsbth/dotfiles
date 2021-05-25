@@ -4,7 +4,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tweekmonster/startuptime.vim'
 
 " fennel (lisp-variant) conf support
-Plug 'Olical/aniseed', { 'tag': 'v3.11.0' }
+Plug 'Olical/aniseed', { 'tag': 'v3.18.0' }
 Plug 'bakpakin/fennel.vim'
 Plug 'Olical/conjure'
 
@@ -21,6 +21,8 @@ Plug 'mhinz/vim-startify'
 " git and github support
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+" and gitlab
+Plug 'shumphrey/fugitive-gitlab.vim'
 
 " changed lines in gutter
 Plug 'airblade/vim-gitgutter'
@@ -43,6 +45,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 
+Plug 'PeterRincker/vim-argumentative'
+
 " remember cursor position
 Plug 'farmergreg/vim-lastplace'
 
@@ -60,6 +64,7 @@ Plug 'sbdchd/neoformat'
 
 " lsp (alt 2)
 Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/deoplete-lsp'
 
@@ -76,6 +81,11 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tjdevries/colorbuddy.nvim'
 Plug 'rockerBOO/boo-colorscheme-nvim'
 Plug 'sainnhe/edge'
+" nothing to see here, move along
+Plug 'doki-theme/doki-theme-vim'
+Plug 'deviantfero/wpgtk.vim'
+
+Plug 'ryanoasis/vim-devicons'
 
 " briefly highlight yanked text
 Plug 'machakann/vim-highlightedyank'
@@ -123,5 +133,14 @@ Plug 'google/vim-jsonnet'
 
 " hy(lang)
 Plug 'hylang/vim-hy'
+
+" terraform
+Plug 'hashivim/vim-terraform'
+
+" take of every
+Plug 'ziglang/zig.vim'
+
+" rust
+Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()

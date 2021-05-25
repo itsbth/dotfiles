@@ -5,12 +5,24 @@
 
 (def- loaded [])
 
+; todo: move to utils
+(defn- some [list pred? idx]
+  (local i (or idx 1))
+  (match (. list i)
+    (where nil) false
+    (where a (pred? a)) true
+    (where _) (some list pred? (+ i 1))))
+
+(defn is-loaded [pname]
+  (local variants [pname (.. pname ".vim") (.. pname ".nvim") (.. "vim-" pname)])
+  (some variants (fn [el] (. nvim.g.plugs el))))
+
 (defn load []
   (let [files (util.glob (.. (nvim.fn.stdpath :config) "/lua/dotfiles/plugins/*.lua"))]
     (each [_ file (ipairs files)]
       (let [plugin (nvim.fn.fnamemodify file ":t:r")]
         ; handle both plugin and plugin.vim
-        (when (or (. nvim.g.plugs plugin) (. nvim.g.plugs (.. plugin ".vim")))
+        (when (is-loaded plugin)
           (table.insert loaded plugin)
           (pcall require (.. "dotfiles.plugins." plugin)))))))
 
