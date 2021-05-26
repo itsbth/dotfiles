@@ -1,19 +1,19 @@
 (module dotfiles.plugins.nvim-lspconfig
   {require {lsp lspconfig 
-            lspi lspinstall
-            completion completion}})
+            lspi lspinstall}})
+            ; completion completion}})
 
 ; Providers without any specific configuration
 (def- simple-providers
   [:gopls
-   :jsonls
+   ; :jsonls
    :rust_analyzer
    :solargraph
-   :sumneko_lua
+   ; :sumneko_lua
    :terraformls
-   :tsserver
-   :vimls
-   :yamlls
+   ; :tsserver
+   ; :vimls
+   ; :yamlls
    :zls])
 
 (def- providers {:pyls_ms {:cmd
@@ -22,12 +22,16 @@
 
 (defn- setup []
   (each [_ provider (ipairs (lspi.installed_servers))]
-    (test providers provider {}))
+    (tset providers provider {}))
   (each [_ provider (ipairs simple-providers)]
     (tset providers provider {}))
 
-  (each [provider opts (ipairs providers)]
-    ((. lsp provider :setup) {:on_attach completion.on_attach})))
+  ; (print (vim.inspect providers))
+
+  (each [provider opts (pairs providers)]
+    (local (succ res) (pcall (. lsp provider :setup) opts))
+    (when (not succ)
+      (print res))))
 
 (lspi.setup)
 (setup)

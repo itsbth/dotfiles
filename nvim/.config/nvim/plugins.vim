@@ -68,11 +68,12 @@ Plug 'kabouzeid/nvim-lspinstall'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/deoplete-lsp'
 
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
 
 Plug 'nvim-lua/lsp_extensions.nvim'
 
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
@@ -94,7 +95,7 @@ Plug 'machakann/vim-highlightedyank'
 " Plug 'rojspencer/vim-colorminder' " extremely slow for some reason
 
 " snippety snip
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 

@@ -44,3 +44,6 @@ augroup resume
 augroup end
 
 " plug#begin " topgrade vim-plug heuristic is bad
+
+set guifont=Fira\ Code,Symbols\ Nerd\ Font
+let g:neovide_cursor_vfx_mode = "railgun"
