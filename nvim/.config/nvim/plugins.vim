@@ -106,6 +106,16 @@ Plug 'junegunn/limelight.vim'
 
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
+" thing picker
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+" thing picker extensions
+Plug 'nvim-telescope/telescope-ghq.nvim'
+Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
+
+
 " LSP/tags viewer
 Plug 'liuchengxu/vista.vim'
 
