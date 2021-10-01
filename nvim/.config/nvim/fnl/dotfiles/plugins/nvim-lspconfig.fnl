@@ -14,11 +14,11 @@
    ; :tsserver
    ; :vimls
    ; :yamlls
+   :denols
+   :pylsp
    :zls])
 
-(def- providers {:pyls_ms {:cmd
-                           [:dotnet :exec "/home/itsbth/repos/github.com/Microsoft/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"]}})
-
+(def- providers {})
 
 (defn- setup []
   (each [_ provider (ipairs (lspi.installed_servers))]
