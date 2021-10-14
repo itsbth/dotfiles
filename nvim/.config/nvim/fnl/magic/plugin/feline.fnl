@@ -1,6 +1,7 @@
 (module magic.plugin.feline
   {autoload {: feline
-             vmu :feline.providers.vi_mode}})
+             vmu :feline.providers.vi_mode
+             lst lsp-status}})
 
 ;; XXX: Feline.generator creates a local reference to feline.components at
 ;; load, so make sure we re-use the table
@@ -46,16 +47,20 @@
 
 (add-component :left {:provider :vi_mode
                       :hl color-by-mode
-                      :right_sep " "})
+                      :left_sep {:str " " :hl color-by-mode}
+                      :right_sep {:str " " :hl color-by-mode}})
 (add-component :left {:provider :file_info
                       :hl color-by-mode
-                      :right_sep " "})
-(add-component :left {:provider :git_branch})
+                      :right_sep :right_filled})
+(add-component :left {:provider :git_branch
+                      :left_sep " "})
 (add-component :left {:provider :git_diff_added})
 (add-component :left {:provider :git_diff_changed})
 (add-component :left {:provider :git_diff_removed})
+(add-component :left {:left_sep :right :provider ""})
 
 (add-component :middle {:provider :lsp_client_names})
+(add-component :middle {:provider (fn [] (lst.status))})
 (add-component :middle {:provider :diagnostic_errors})
 (add-component :middle {:provider :diagnostic_warnings})
 (add-component :middle {:provider :diagnostic_hints})

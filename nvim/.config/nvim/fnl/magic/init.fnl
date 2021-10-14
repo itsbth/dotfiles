@@ -1,6 +1,7 @@
 (module magic.init
   {autoload {plugin magic.plugin
-             nvim aniseed.nvim}})
+             nvim aniseed.nvim}
+   require-macros [magic.macros]})
 
 ;;; Introduction
 
@@ -40,8 +41,11 @@
 ;; Run script/sync.sh to update, install and clean your plugins.
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
+  ;; FENNEL
   :Olical/aniseed {:tag "v3.22.0"}
   :Olical/conjure {:tag "v4.24.0"}
+
+  ;; MISC FROM MAGIC-KIT, to be evaluated and categorized
   :PeterRincker/vim-argumentative {}
   ; :airblade/vim-gitgutter {}
   :clojure-vim/clojure.vim {}
@@ -71,21 +75,44 @@
   :tpope/vim-surround {}
   :tpope/vim-unimpaired {}
   :tpope/vim-vinegar {}
-  :w0rp/ale {:mod :ale}
+  ; :w0rp/ale {:mod :ale} ; replaced by null-ls
   :wbthomason/packer.nvim {}
 
+  ; CMPLETION
+  :hrsh7th/cmp-path {}
+  :hrsh7th/cmp-buffer {}
+  :hrsh7th/cmp-nvim-lsp {}
+
+
+  ;; TREESITTER
   ; y u no sit in trees
   :nvim-treesitter/nvim-treesitter {:mod :treesitter}
   ; pest removal helper
   :nvim-treesitter/playground {}
+
+  ;; LSP
   ; automatically configure lsp clients
   :neovim/nvim-lspconfig {}
   ; install 'em
   :williamboman/nvim-lsp-installer {:mod :lspinfo}
+  ; better lsp
+  :tami5/lspsaga.nvim {:mod :lspsaga}
+  ; fix missing colors
+  :folke/lsp-colors.nvim {}
+  ; does stuff
+  :folke/trouble.nvim {:mod :trouble}
+  ; "fake" server
+  :jose-elias-alvarez/null-ls.nvim {:mod :null-ls}
+  ; status line helpers
+  :nvim-lua/lsp-status.nvim {}
+
+  ;; MISC, need to categorize
   ; pretty colours
   :folke/tokyonight.nvim {:mod :tokyonight}
+  ; weeby colours
+  :doki-theme/doki-theme-vim {}
   ; pretty icons
-  :kyazdani42/nvim-web-devicons {}
+  :kyazdani42/nvim-web-devicons {:mod :devicons}
   ; can't live without parinfer -- let's try a pure lua variant
   :gpanders/nvim-parinfer {}
   ; where are my files
@@ -94,15 +121,28 @@
   :nvim-telescope/telescope.nvim {:requires [:nvim-lua/plenary.nvim]
                                   :mod :telescope}
   ; dashboard test
-  :glepnir/dashboard-nvim {:mod :dashboard}
+  ; :glepnir/dashboard-nvim {:mod :dashboard}
   ; 🐈bar
-  :Famiu/feline.nvim {:mod :feline}
+  :famiu/feline.nvim {:mod :feline}
   ; :shadmansaleh/lualine.nvim {:mod :lualine})
   ; 🧠
   ; :glepnir/galaxyline.nvim {:mod :galaxyline}
+  ; bufferline (because i can't remember what i have open)
+  :akinsho/bufferline.nvim {:mod :bufferline}
   ; git gutter++
   :lewis6991/gitsigns.nvim {:requires [:nvim-lua/plenary.nvim]
                             :config (fn [] (let [gs (require :gitsigns)] (gs.setup)))}
-  ; better lsp
-  :tami5/lspsaga.nvim {:mod :lspsaga})
+  ; fine farger
+  :norcalli/nvim-colorizer.lua {}
+  ; go back
+  :farmergreg/vim-lastplace {}
+  ; debugging
+  :mfussenegger/nvim-dap {}
+  
+  ;; languages
+  ; markdown
+  :ellisonleao/glow.nvim {}); glow-powered markdown preview
 
+(augroup highlight_yank
+   (nvim.ex.autocmd
+     :TextYankPost "*" "lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }"))
