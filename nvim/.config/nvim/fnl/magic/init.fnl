@@ -27,6 +27,7 @@
 
 (nvim.ex.set :spell)
 (nvim.ex.set :list)
+(nvim.ex.set :title)
 
 ;;; Mappings
 
@@ -42,8 +43,8 @@
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
   ;; FENNEL
-  :Olical/aniseed {:tag "v3.22.0"}
-  :Olical/conjure {:tag "v4.24.0"}
+  :Olical/aniseed {:tag "v3.23.0"}
+  :Olical/conjure {:tag "v4.25.0"}
 
   ;; MISC FROM MAGIC-KIT, to be evaluated and categorized
   :PeterRincker/vim-argumentative {}
@@ -78,11 +79,13 @@
   ; :w0rp/ale {:mod :ale} ; replaced by null-ls
   :wbthomason/packer.nvim {}
 
-  ; CMPLETION
+  ;; CMPLETION
   :hrsh7th/cmp-path {}
   :hrsh7th/cmp-buffer {}
   :hrsh7th/cmp-nvim-lsp {}
-
+  ; some lsp servers (looking at you, rust_analyzer) requires snippets
+  :L3MON4D3/LuaSnip {}
+  :saadparwaiz1/cmp_luasnip {}
 
   ;; TREESITTER
   ; y u no sit in trees
@@ -96,7 +99,7 @@
   ; install 'em
   :williamboman/nvim-lsp-installer {:mod :lspinfo}
   ; better lsp
-  :tami5/lspsaga.nvim {:mod :lspsaga}
+  :tami5/lspsaga.nvim {:mod :lspsaga :branch :nvim51}
   ; fix missing colors
   :folke/lsp-colors.nvim {}
   ; does stuff
