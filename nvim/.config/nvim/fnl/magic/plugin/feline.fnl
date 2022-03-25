@@ -1,7 +1,8 @@
 (module magic.plugin.feline
   {autoload {: feline
-             vmu :feline.providers.vi_mode
-             lst lsp-status}})
+             vmu feline.providers.vi_mode
+             lst lsp-status
+             gps nvim-gps}})
 
 ;; XXX: Feline.generator creates a local reference to feline.components at
 ;; load, so make sure we re-use the table
@@ -15,8 +16,10 @@
     :middle 2
     :right 3))
 
+(def- defaults {:right_sep " "})
+
 (defn- add-component [pos component]
-  (table.insert (. components.active (position->index pos)) component))
+  (table.insert (. components.active (position->index pos)) (vim.tbl_extend :force defaults component)))
 
 
 ; lualine pale night from https://github.com/hoob3rt/lualine.nvim/blob/master/lua/lualine/themes/palenight.lua
@@ -45,7 +48,10 @@
    :bg (vmu.get_mode_color)
    :style :bold})
 
-(add-component :left {:provider :vi_mode
+(defn- plugin? [name]
+  (?. packer_plugins name :loaded))
+
+(add-component :left {:provider (fn [] (vmu.get_vim_mode))
                       :hl color-by-mode
                       :left_sep {:str " " :hl color-by-mode}
                       :right_sep {:str " " :hl color-by-mode}})
@@ -59,14 +65,20 @@
 (add-component :left {:provider :git_diff_removed})
 (add-component :left {:left_sep :right :provider ""})
 
-(add-component :middle {:provider :lsp_client_names})
-(add-component :middle {:provider (fn [] (lst.status))})
+(add-component :left {:provider :lsp_client_names})
+(add-component :left {:provider (fn [] (lst.status))})
 (add-component :middle {:provider :diagnostic_errors})
 (add-component :middle {:provider :diagnostic_warnings})
 (add-component :middle {:provider :diagnostic_hints})
 
-(add-component :right {:provider :file_type})
+(when (plugin? :nvim-gps)
+  (gps.setup)
+  (add-component :right {:provider gps.get_location :enabled gps.is_available}))
+(add-component :right {:provider :file_type :filetype_icon true})
 (add-component :right {:provider :file_encoding})
+(add-component :right {:provider :line_percentage})
+(add-component :right {:provider :scroll_bar})
 
-(feline.setup {: components : colors})
+(feline.setup {: components :theme colors})
 (feline.reset_highlights)
+

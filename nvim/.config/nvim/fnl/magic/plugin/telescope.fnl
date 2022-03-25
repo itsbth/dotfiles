@@ -1,12 +1,19 @@
 (module magic.plugin.telescope
-  {autoload {nvim aniseed.nvim
-             wk which-key}})
+        {autoload {nvim aniseed.nvim
+                   wk which-key
+                   : telescope
+                   bi telescope.builtin}})
 
-(defn- telescope [action]
-  (.. "<cmd>Telescope "  action  "<cr>"))
+(telescope.setup {:extensions {:fzf {:fuzzy true
+                                     :override_generic_sorter true
+                                     :override_file_sorter true
+                                     :case_mode :smart_case}}})
 
-(wk.register {:f {:name "file"
-                  :f [(telescope :find_files) "Find File"]
-                  :g [(telescope :live_grep) "Live Grep"]
-                  :b [(telescope :buffers) "Buffers"]}}
-             {:prefix :<leader>})
+(telescope.load_extension :fzf)
+
+(wk.register {:f {:name :file
+                  :f [bi.find_files "Find File"]
+                  :g [bi.live_grep "Live Grep"]
+                  :b [bi.buffers :Buffers]
+                  :r [bi.resume :Resume]}} {:prefix :<leader>})
+

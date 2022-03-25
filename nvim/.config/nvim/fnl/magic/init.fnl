@@ -25,7 +25,7 @@
 (set nvim.o.sessionoptions "blank,curdir,folds,help,tabpages,winsize")
 (set nvim.o.inccommand :split)
 
-(nvim.ex.set :spell)
+; (nvim.ex.set :spell)
 (nvim.ex.set :list)
 (nvim.ex.set :title)
 
@@ -42,9 +42,12 @@
 ;; Run script/sync.sh to update, install and clean your plugins.
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
+  ; load first for big speed
+  :lewis6991/impatient.nvim {:config #(require :impatient)}
   ;; FENNEL
-  :Olical/aniseed {:tag "v3.23.0"}
-  :Olical/conjure {:tag "v4.25.0"}
+  :Olical/aniseed {:tag "v3.27.3"}
+  :Olical/conjure {:tag "v4.30.1"}
+  :Olical/nvim-local-fennel {:tag "v2.18.0"}
 
   ;; MISC FROM MAGIC-KIT, to be evaluated and categorized
   :PeterRincker/vim-argumentative {}
@@ -64,7 +67,6 @@
   :radenling/vim-dispatch-neovim {}
   ; :srcery-colors/srcery-vim {:mod :srcery}
   ; :tami5/compe-conjure {}
-  :PaterJason/cmp-conjure {}
   :tpope/vim-abolish {}
   :tpope/vim-commentary {}
   :tpope/vim-dispatch {}
@@ -83,9 +85,12 @@
   :hrsh7th/cmp-path {}
   :hrsh7th/cmp-buffer {}
   :hrsh7th/cmp-nvim-lsp {}
+  :hrsh7th/cmp-emoji {}
+  :PaterJason/cmp-conjure {}
   ; some lsp servers (looking at you, rust_analyzer) requires snippets
   :L3MON4D3/LuaSnip {}
   :saadparwaiz1/cmp_luasnip {}
+  :rafamadriz/friendly-snippets {}
 
   ;; TREESITTER
   ; y u no sit in trees
@@ -99,7 +104,7 @@
   ; install 'em
   :williamboman/nvim-lsp-installer {:mod :lspinfo}
   ; better lsp
-  :tami5/lspsaga.nvim {:mod :lspsaga :branch :nvim51}
+  :tami5/lspsaga.nvim {:mod :lspsaga}
   ; fix missing colors
   :folke/lsp-colors.nvim {}
   ; does stuff
@@ -108,12 +113,36 @@
   :jose-elias-alvarez/null-ls.nvim {:mod :null-ls}
   ; status line helpers
   :nvim-lua/lsp-status.nvim {}
+  ; symbols
+  :simrat39/symbols-outline.nvim {}
+  ; status
+  :j-hui/fidget.nvim {:config (setup! fidget)}
+
+  ; motion sickness
+  :ggandor/lightspeed.nvim {}
+
+  ;; i swear it's not emacs
+  :kristijanhusak/orgmode.nvim {:mod :org-mode}
+  :akinsho/org-bullets.nvim {}
+  :lukas-reineke/headlines.nvim {}
+  :michaelb/sniprun {:run "bash ./install.sh"}
+
+  ;; UI
+  ; distraction-free editing
+  :folke/twilight.nvim {:mod :twilight}
+  :folke/zen-mode.nvim {:mod :zen}
+
+  ;; SESSION
+  :rmagatti/auto-session {:mod :auto-session}
+  :rmagatti/session-lens {}
 
   ;; MISC, need to categorize
   ; pretty colours
   :folke/tokyonight.nvim {:mod :tokyonight}
   ; weeby colours
   :doki-theme/doki-theme-vim {}
+  ; catty colors
+  :catppuccin/nvim {:as :catppuccin}
   ; pretty icons
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   ; can't live without parinfer -- let's try a pure lua variant
@@ -123,18 +152,28 @@
   ; how do i get to my files
   :nvim-telescope/telescope.nvim {:requires [:nvim-lua/plenary.nvim]
                                   :mod :telescope}
+  :nvim-telescope/telescope-fzf-native.nvim {:run :make}
+  ; vim.ui.* improvements
+  :stevearc/dressing.nvim {}
+  ; notifications
+  :rcarriga/nvim-notify {:config  #(set vim.notify (require :notify))}
   ; dashboard test
   ; :glepnir/dashboard-nvim {:mod :dashboard}
+  :startup-nvim/startup.nvim {:mod :startup}
   ; 🐈bar
   :famiu/feline.nvim {:mod :feline}
   ; :shadmansaleh/lualine.nvim {:mod :lualine})
   ; 🧠
   ; :glepnir/galaxyline.nvim {:mod :galaxyline}
+  ; line
+  ; :windwp/windline.nvim {:mod :windline}
   ; bufferline (because i can't remember what i have open)
   :akinsho/bufferline.nvim {:mod :bufferline}
   ; git gutter++
   :lewis6991/gitsigns.nvim {:requires [:nvim-lua/plenary.nvim]
-                            :config (fn [] (let [gs (require :gitsigns)] (gs.setup)))}
+                            :config (setup! gitsigns)}
+  ; tree-sitter powered status segment
+  :SmiteshP/nvim-gps {}
   ; fine farger
   :norcalli/nvim-colorizer.lua {}
   ; go back
@@ -144,7 +183,18 @@
   
   ;; languages
   ; markdown
-  :ellisonleao/glow.nvim {}); glow-powered markdown preview
+  :ellisonleao/glow.nvim {}; glow-powered markdown preview
+  ; json
+  :b0o/schemastore.nvim {}
+  ; fsharp
+  :ionide/Ionide-vim {:run "make fsautocomplete"})
+  ; very very very wip, remove after testing
+  ; :github/copilot.vim {}
+  ; :hrsh7th/cmp-copilot {})
+
+
+; (set vim.g.copilot_no_tab_map true)
+; (set vim.g.copilot_assume_mapped true)
 
 (augroup highlight_yank
    (nvim.ex.autocmd

@@ -39,4 +39,7 @@
       (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
       ,...
       (vim.cmd "augroup END")
-      nil))}
+      nil))
+ :setup!
+ (fn [module]
+   `(fn [] ((. (require ,(tostring module)) :setup))))}
