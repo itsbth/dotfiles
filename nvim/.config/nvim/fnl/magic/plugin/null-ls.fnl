@@ -1,5 +1,7 @@
 (module magic.plugin.null-ls
-        {autoload {nvim aniseed.nvim nl null-ls : lspconfig}})
+        {autoload {nvim aniseed.nvim
+                   nl null-ls
+                   : lspconfig}})
 
 (def- bi nl.builtins)
 (nl.setup {:sources [bi.formatting.prettier

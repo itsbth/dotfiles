@@ -43,11 +43,11 @@
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
   ; load first for big speed
-  :lewis6991/impatient.nvim {:config #(require :impatient)}
+  :lewis6991/impatient.nvim {}
   ;; FENNEL
-  :Olical/aniseed {:tag "v3.27.3"}
-  :Olical/conjure {:tag "v4.30.1"}
-  :Olical/nvim-local-fennel {:tag "v2.18.0"}
+  :Olical/aniseed {:tag "v3.29.*"}
+  :Olical/conjure {:tag "v4.34.*"}
+  :Olical/nvim-local-fennel {:tag "v2.19.*"}
 
   ;; MISC FROM MAGIC-KIT, to be evaluated and categorized
   :PeterRincker/vim-argumentative {}
@@ -59,7 +59,7 @@
   :guns/vim-sexp {}
   :hrsh7th/nvim-cmp {:mod :cmp}
   ; :itchyny/lightline.vim {}
-  :jiangmiao/auto-pairs {:mod :auto-pairs}
+  ; :jiangmiao/auto-pairs {:mod :auto-pairs}
   :junegunn/fzf {}
   :junegunn/fzf.vim {}
   :liuchengxu/vim-better-default {:mod :better-default}
@@ -68,18 +68,27 @@
   ; :srcery-colors/srcery-vim {:mod :srcery}
   ; :tami5/compe-conjure {}
   :tpope/vim-abolish {}
-  :tpope/vim-commentary {}
+  ; :tpope/vim-commentary {}
   :tpope/vim-dispatch {}
   :tpope/vim-eunuch {}
   :tpope/vim-fugitive {}
+  :tpope/vim-rhubarb {}
+  :shumphrey/fugitive-gitlab.vim {}
   :tpope/vim-repeat {}
   :tpope/vim-sexp-mappings-for-regular-people {}
   :tpope/vim-sleuth {}
-  :tpope/vim-surround {}
+  ; :tpope/vim-surround {}
   :tpope/vim-unimpaired {}
   :tpope/vim-vinegar {}
   ; :w0rp/ale {:mod :ale} ; replaced by null-ls
   :wbthomason/packer.nvim {}
+
+  ;; MINI (misc utilities)
+  :echasnovski/mini.nvim {:mod :mini}
+
+  ;; IMPRTNT
+  ; best(?) editorconfig plugin
+  :gpanders/editorconfig.nvim {}
 
   ;; CMPLETION
   :hrsh7th/cmp-path {}
@@ -91,6 +100,9 @@
   :L3MON4D3/LuaSnip {}
   :saadparwaiz1/cmp_luasnip {}
   :rafamadriz/friendly-snippets {}
+  ; icons
+  :onsails/lspkind.nvim {}
+  :ray-x/lsp_signature.nvim {}
 
   ;; TREESITTER
   ; y u no sit in trees
@@ -127,6 +139,9 @@
   :lukas-reineke/headlines.nvim {}
   :michaelb/sniprun {:run "bash ./install.sh"}
 
+  ;; git lost
+  :TimUntersberger/neogit {:config (setup! neogit)}
+
   ;; UI
   ; distraction-free editing
   :folke/twilight.nvim {:mod :twilight}
@@ -138,11 +153,15 @@
 
   ;; MISC, need to categorize
   ; pretty colours
-  :folke/tokyonight.nvim {:mod :tokyonight}
+  :folke/tokyonight.nvim {}
   ; weeby colours
   :doki-theme/doki-theme-vim {}
-  ; catty colors
-  :catppuccin/nvim {:as :catppuccin}
+  ; catty colours (currently disabled as it breaks other schemes)
+  ; :catppuccin/nvim {:as :catppuccin :mod :catppuccin}
+  ; rosy colours
+  :rose-pine/neovim {:as :rose-pine}
+  ; wavy colours
+  :rebelot/kanagawa.nvim {}
   ; pretty icons
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   ; can't live without parinfer -- let's try a pure lua variant
@@ -161,8 +180,8 @@
   ; :glepnir/dashboard-nvim {:mod :dashboard}
   :startup-nvim/startup.nvim {:mod :startup}
   ; 🐈bar
-  :famiu/feline.nvim {:mod :feline}
-  ; :shadmansaleh/lualine.nvim {:mod :lualine})
+  ; :feline-nvim/feline.nvim {:mod :feline}
+  :nvim-lualine/lualine.nvim {:mod :lualine}
   ; 🧠
   ; :glepnir/galaxyline.nvim {:mod :galaxyline}
   ; line
@@ -180,7 +199,11 @@
   :farmergreg/vim-lastplace {}
   ; debugging
   :mfussenegger/nvim-dap {}
-  
+
+  ;; TERM
+  ; :akinsho/toggleterm.nvim {:tag "v2.*" :config #((. (require :toggleterm) :setup) {:open_mapping :<c-\>})}
+  :akinsho/toggleterm.nvim {:tag "v2.*" :mod :toggleterm}
+
   ;; languages
   ; markdown
   :ellisonleao/glow.nvim {}; glow-powered markdown preview
@@ -196,6 +219,12 @@
 ; (set vim.g.copilot_no_tab_map true)
 ; (set vim.g.copilot_assume_mapped true)
 
-(augroup highlight_yank
-   (nvim.ex.autocmd
-     :TextYankPost "*" "lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }"))
+; (augroup highlight_yank
+;    (nvim.ex.autocmd
+;      :TextYankPost "*" "lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }"))
+
+; Hm...
+(augroup! highlight_yank
+          :TextYankPost {:callback #(vim.highlight.on_yank {:higroup :IncSearch :timeout 200})})
+
+(nvim.ex.colorscheme :rose-pine)

@@ -24,6 +24,16 @@
 ;; unreadable and far too "clever", use them when plain functions aren't enough
 ;; or are too awkward to wield for your specific problem.
 
+(fn to-pairs [arr]
+  (local ret [])
+  (for [i 1 (# arr) 2]
+    (table.insert ret [(. arr i) (. arr (+ i 1))]))
+  ret)
+
+(fn dup [tbl]
+  (collect [k v (pairs tbl)]
+    k v))
+
 {;; This is just a silly example macro.
  ; (infix-example-macro 2 + 3) => compiles to: (+ 2 3) => evaluates to: 5
  :infix-example-macro
@@ -33,13 +43,23 @@
  ;; Create an augroup for your autocmds.
  ; (augroup my-group
  ;   (nvim.ex.autocmd ...))
+ ; @deprecated -- use `augroup!`, which uses the lua api
  :augroup
  (fn [name ...]
    `(do
-      (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
-      ,...
-      (vim.cmd "augroup END")
-      nil))
+       (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
+       ,...
+       (vim.cmd "augroup END")
+       nil))
+ :augroup!
+ (fn [name ...]
+   (local cmd (to-pairs [...]))
+   `(let [group# (nvim.create_augroup ,(tostring name) {:clear true})]
+      ,(icollect [_ v (ipairs cmd)]
+         (do
+           (local opt (dup (. v 2)))
+           (tset opt :group `group#)
+           `(nvim.create_autocmd ,(. v 1) ,opt)))))
  :setup!
- (fn [module]
-   `(fn [] ((. (require ,(tostring module)) :setup))))}
+ (fn [module ?opt]
+   `(fn [] ((. (require ,(tostring module)) :setup) ,?opt)))}

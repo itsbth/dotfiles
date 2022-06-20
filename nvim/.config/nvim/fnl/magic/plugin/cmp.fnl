@@ -2,7 +2,14 @@
   {autoload {nvim aniseed.nvim
              : cmp
              : luasnip
+             : lspkind
+             sig lsp_signature
              lfv luasnip.loaders.from_vscode}})
+
+(lspkind.init {:preset :codicons})
+
+;; TODO: Move to LSP setup module?
+(sig.setup {})
 
 (cmp.setup {:sources [{:name :nvim_lsp}
                       ; {:name :copilot}
@@ -12,6 +19,7 @@
                       {:name :luasnip}
                       {:name :emoji}
                       {:name :buffer}]
+            :formatting {:format (lspkind.cmp_format {})}
             :snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
             :mapping {:<C-Space> (cmp.mapping.complete)
                       :<Tab> (cmp.mapping (fn [fallback]

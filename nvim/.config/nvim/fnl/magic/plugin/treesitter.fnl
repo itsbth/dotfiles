@@ -2,7 +2,9 @@
   {autoload {nvim aniseed.nvim
              treesitter nvim-treesitter.configs}})
 
-(treesitter.setup {:ensure_installed :maintained
+(def- ensure_installed [:javascript :typescript :json :yaml :python :lua :fennel])
+
+(treesitter.setup {: ensure_installed
                    :highlight {:enable true}
                    :incremental_selection {:enable true}
                    :textobjects {:enable true}
