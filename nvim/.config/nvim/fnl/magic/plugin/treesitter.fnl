@@ -9,6 +9,7 @@
                    :incremental_selection {:enable true}
                    :textobjects {:enable true}
                    :indent {:enable true :disable [:python]}
-                   ; :autotag {:enable true}
-                   :refactor {:enable true}})
+                   :autotag {:enable true}
+                   :refactor {:enable true}
+                   :rainbow {:enable true}})
 

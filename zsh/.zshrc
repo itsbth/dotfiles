@@ -27,11 +27,12 @@ it_time_section() {
 
 it_time_section "load zinit module"
 
-module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
-zmodload zdharma/zplugin
+# module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
+# zmodload zdharma/zplugin
 
 it_time_section "misc header"
 
+autoload -U +X bashcompinit && bashcompinit
 typeset -aUx path
 fpath=($HOME/.zsh $fpath)
 export path=($HOME/.local/bin /snap/bin "$path[@]")
@@ -42,18 +43,26 @@ take() { mkdir -p "$1" && cd "$1" }
 
 export EDITOR="$(which nvim)"
 
+# emacs bindings
+bindkey -e
+
 it_time_section "nvm"
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 # export PATH="$NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)/bin:$PATH"
 # default to latest version
-export PATH="$NVM_DIR/versions/node/$(ls $NVM_DIR/versions/node | sort -V | tail -n1)/bin:$PATH"
-alias nvm='unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@'
+# export PATH="$NVM_DIR/versions/node/$(ls $NVM_DIR/versions/node | sort -V | tail -n1)/bin:$PATH"
+# alias nvm='unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@'
+
+# it_time_section "fnm"
+# if (( $+commands[fnm] )); then
+#   eval "$(fnm env)"
+# fi
 
 it_time_section "misc"
 
@@ -86,7 +95,7 @@ zinit ice wait"0"
 zinit light zsh-users/zsh-history-substring-search
 
 zinit ice wait"0" atinit"zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 
 # zinit ice pick"async.zsh" src"pure.zsh"
@@ -95,23 +104,17 @@ zinit light zdharma/fast-syntax-highlighting
 #zinit snippet OMZ::lib/git.zsh
 #zinit light therealklanni/purity
 
-zinit ice from"gh-r" bpick"*linux-amd64*" pick"hub-*/bin/hub" as"command"
-zinit light 'github/hub'
-
-zinit ice from"gh-r" as"command" mv"hivemind-* -> hivemind"
-zinit light DarthSim/hivemind
-
-zinit ice from"gh-r" as"program"
-zinit light junegunn/fzf-bin
-
 zinit ice pick"bin/fzf-tmux" as"program" multisrc"shell/{completion,key-bindings}.zsh"
 zinit light junegunn/fzf
 
 zinit ice wait"0"
 zinit light molovo/tipz
 
-zinit ice wait"0"
-zinit light marzocchi/zsh-notify
+# zinit ice wait"0"
+# zinit light marzocchi/zsh-notify
+
+# zinit ice wait"0
+# zinit light "MichaelAquilina/zsh-auto-notify"
 
 zinit snippet PZT::modules/helper/init.zsh
 zinit ice atload"[ -d external/ ] || git clone https://github.com/zsh-users/zsh-completions external"
@@ -124,16 +127,17 @@ zinit ice svn
 zinit snippet PZT::modules/utility/
 zinit ice svn
 zinit snippet PZT::modules/git/
-zinit snippet PZT::modules/gpg/init.zsh
-zinit snippet PZT::modules/ssh/init.zsh
+# (probably) not needed
+# zinit snippet PZT::modules/gpg/init.zsh
+# zinit snippet PZT::modules/ssh/init.zsh
 #zinit ice wait"0" blockf
 #zinit snippet PZT::modules/history-substring-search/init.zsh
 
 zinit ice from"gh-r" bpick"*linux_amd64*" pick"ghq_*/ghq" as"command"
 zinit light x-motemen/ghq
 
-zinit light zdharma/zui
-zinit light zdharma/zplugin-crasis
+# zinit light zdharma-continuum/zui
+# zinit light zdharma-continuum/zplugin-crasis
 
 zinit light itsbth/zsh-fzf-ghq
 
@@ -144,31 +148,13 @@ it_time_section "thefuck"
 
 eval $(thefuck --alias)
 
-it_time_section "ktheme defs"
-
-ktheme() {
-	if [ "$1" = random ]; then
-		local theme="$(find $HOME/repos/github.com/dexpota/kitty-themes/ -not -path '*/\.*' -type f | shuf -n 1)"
-		kitty @ set-colors -a -c "$theme"
-	else
-		kitty @ set-colors -a -c "$HOME/repos/github.com/dexpota/kitty-themes/themes/$1.conf"
-	fi
-}
-
-_ktheme() {
-	local themes=( $HOME/repos/github.com/dexpota/kitty-themes/themes/*.conf(:r:t) random )
-	_values 'themes' $themes
-}
-
-compdef _ktheme ktheme
-
 it_time_section "print splash"
 
 # try (and fail) to detect nested shells
 if [ "$(ps -p $PPID -o comm=)" != zsh ]; then
 	if [[ $TERM = xterm-kitty-not && -f $HOME/Pictures/pexip-logo-hvit.svg ]]; then
 		kitty +kitten icat $HOME/Pictures/pexip-logo-hvit.svg
-	elif [[ $+commands[toilet] && $+commands[lolcat] ]]; then
+	elif [[ -x $commands[toilet] && -x $commands[lolcat] ]]; then
 	    toilet -f bigmono12 pexip | lolcat -t
 	fi
 fi
@@ -179,14 +165,14 @@ it_time_section "motd"
 	local motd="$1"
 	local len="$(jq length $motd)"
 	# not quite random, but good enough
-	local rand=$(( RANDOM % len ))
+        local rand=$(( RANDOM % len ))
 	jq -r ".[$rand] | \"\\(.name): \\(.desc)\"" "$motd"
 } "$HOME/.motd-name.json"
 
 
 it_time_section "starship"
 
-if [[ $+commands[starship] ]]; then
+if (( $+commands[starship] )); then
 	if [[ ! -f "$ZSH_CACHE_DIR/starship_init.zsh.zwc"
 		|| $commands[starship] -nt "$ZSH_CACHE_DIR/starship_init.zsh" ]]; then
 		starship init zsh --print-full-init >! "$ZSH_CACHE_DIR/starship_init.zsh"
@@ -197,7 +183,9 @@ fi
 it_time_section "kubectl completion"
 
 # ignore potential zwc error
-kubectl completion zsh | source /dev/stdin 2> /dev/null
+if (( $+commands[kubectl] )); then
+	kubectl completion zsh | source /dev/stdin 2> /dev/null
+fi
 
 it_time_section "gcloud sdk"
 
@@ -217,11 +205,16 @@ path+=$GOPATH/bin
 
 it_time_section "hub"
 
-[[ $+commands[hub] ]] && eval "$(hub alias -s)"
+(( $+commands[hub] )) && eval "$(hub alias -s)"
 
 it_time_section ""
 
-hash -d pexip=$HOME/repos/github.com/pexip videxio=$HOME/repos/github.com/videxio me=$HOME/repos/github.com/itsbth
+hash -d github=$HOME/repos/github.com \
+	gitlab=$HOME/repos/gitlab.com \
+	pexip=$HOME/repos/github.com/pexip \
+	pex-gl=$HOME/repos/gitlab.com/pexip \
+	videxio=$HOME/repos/github.com/videxio \
+	me=$HOME/repos/github.com/itsbth
 
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
@@ -242,6 +235,17 @@ zpcompinit; zpcdreplay
 [ ! -s "$HOME/.travis/travis.sh" ] || source "$HOME/.travis/travis.sh"
 
 # Scaleway CLI autocomplete initialization.
-eval "$(scw autocomplete script shell=zsh)"
+if (( $+commands[scw] )); then
+	eval "$(scw autocomplete script shell=zsh)"
+fi
 complete -o nospace -C /home/itsbth/.local/bin/kustomize kustomize
-autoload -U +X bashcompinit && bashcompinit
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+source /home/itsbth/.config/broot/launcher/bash/br
+
+# disabled, probably conflicts with volta
+# pnpm
+# export PNPM_HOME="/home/itsbth/.local/share/pnpm"
+# export PATH="$PNPM_HOME:$PATH"
+# pnpm end

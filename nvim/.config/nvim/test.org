@@ -1,0 +1,23 @@
+#+TITLE: Test thing
+
+* Test
+
+
+* TODO: Run code
+#+NAME: Test snippet
+#+BEGIN_SRC javascript
+console.log("hello world");
+#+END_SRC
+
+#+BEGIN_SRC python
+print("Hello, World!")
+#+END_SRC
+
+#+BEGIN_SRC c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, %s!\n", "World");
+    return 0;
+}
+#+END_SRC

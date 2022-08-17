@@ -103,20 +103,25 @@
   ; icons
   :onsails/lspkind.nvim {}
   :ray-x/lsp_signature.nvim {}
+  "https://git.sr.ht/~whynothugo/lsp_lines.nvim" {}
 
   ;; TREESITTER
   ; y u no sit in trees
   :nvim-treesitter/nvim-treesitter {:mod :treesitter}
   ; pest removal helper
   :nvim-treesitter/playground {}
+  ; 🌈
+  :p00f/nvim-ts-rainbow {}
 
   ;; LSP
   ; automatically configure lsp clients
   :neovim/nvim-lspconfig {}
   ; install 'em
-  :williamboman/nvim-lsp-installer {:mod :lspinfo}
+  ; :williamboman/nvim-lsp-installer {:mod :lspinfo}
+  :williamboman/mason.nvim {:mod :mason}
+  :williamboman/mason-lspconfig.nvim {}
   ; better lsp
-  :tami5/lspsaga.nvim {:mod :lspsaga}
+  :glepnir/lspsaga.nvim {:mod :lspsaga}
   ; fix missing colors
   :folke/lsp-colors.nvim {}
   ; does stuff
@@ -210,10 +215,12 @@
   ; json
   :b0o/schemastore.nvim {}
   ; fsharp
-  :ionide/Ionide-vim {:run "make fsautocomplete"})
+  :ionide/Ionide-vim {:run "make fsautocomplete"}
   ; very very very wip, remove after testing
   ; :github/copilot.vim {}
   ; :hrsh7th/cmp-copilot {})
+  ; earthly
+  :earthly/earthly.vim {})
 
 
 ; (set vim.g.copilot_no_tab_map true)

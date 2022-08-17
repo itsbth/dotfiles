@@ -7,5 +7,8 @@
 (nl.setup {:sources [bi.formatting.prettier
                      bi.formatting.shfmt
                      bi.formatting.fnlfmt
-                     bi.diagnostics.shellcheck]})
+
+                     bi.diagnostics.shellcheck
+
+                     bi.diagnostics.eslint]})
 

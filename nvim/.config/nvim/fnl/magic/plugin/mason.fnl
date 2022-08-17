@@ -1,10 +1,12 @@
-(module magic.plugin.lspinfo
+(module magic.plugin.mason
         {autoload {nvim aniseed.nvim
                    lspc lspconfig
-                   lspi nvim-lsp-installer
+                   : mason
+                   mlspc mason-lspconfig
                    cmp cmp_nvim_lsp
                    wk which-key
-                   : schemastore}})
+                   : schemastore
+                   : lsp_lines}})
 
 
 (wk.register {:K [vim.lsp.buf.hover "LSP Hover"]})
@@ -21,7 +23,9 @@
 (wk.register {:<leader>rn [vim.lsp.buf.rename "LSP Rename"]})
 (wk.register {:gr [vim.lsp.buf.references "LSP References"]})
 
-(lspi.setup {:automatic_installation true})
+(mason.setup {})
+(mlspc.setup {:automatic_installation true})
+
 
 (defn- drop-formatting [capabilities]
         (vim.tbl_deep_extend :force capabilities {}))
@@ -32,7 +36,9 @@
 (lspc.tsserver.setup {: capabilities
                       :root_dir (lspc.util.root_pattern :package.json)})
 (lspc.denols.setup {: capabilities
-                    :root_dir (lspc.util.root_pattern :deno.json :deno.jsonc)})
+                    :root_dir (lspc.util.root_pattern :deno.json :deno.jsonc)
+                    ; disable single file support to stop it from launching when it can't find deno.json
+                    :single_file_support false})
 (lspc.jsonls.setup {: capabilities :settings {:json {:schemas (schemastore.json.schemas)}}})
 
 (lspc.gopls.setup {: capabilities})
@@ -44,6 +50,7 @@
 (lspc.clojure_lsp.setup {: capabilities})
 (lspc.cssls.setup {: capabilities})
 (lspc.cssmodules_ls.setup {: capabilities})
+(lspc.yamlls.setup {: capabilities})
 ; (lspc.spectral.setup {: capabilities})
 (lspc.sumneko_lua.setup {: capabilities})
 (lspc.taplo.setup {: capabilities})
@@ -53,3 +60,11 @@
 (lspc.html.setup {: capabilities})
 (lspc.grammarly.setup {: capabilities})
 (lspc.emmet_ls.setup {: capabilities})
+
+(defn- plugin? [name]
+  (?. packer_plugins name :loaded))
+
+(when (plugin? :lsp_lines.nvim)
+      (lsp_lines.setup {})
+      (vim.diagnostic.config {:virtual_text false})
+      (wk.register {:<leader>tl [lsp_lines.toggle "Toggle virtual lines"]}))
