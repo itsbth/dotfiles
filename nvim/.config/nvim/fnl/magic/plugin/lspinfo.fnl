@@ -38,8 +38,8 @@
 (lspc.gopls.setup {: capabilities})
 (lspc.golangci_lint_ls.setup {: capabilities})
 
-(lspc.diagnosticls.setup {: capabilities})
-(lspc.asm_lsp.setup {: capabilities})
+; (lspc.diagnosticls.setup {: capabilities})
+; (lspc.asm_lsp.setup {: capabilities})
 (lspc.clangd.setup {: capabilities})
 (lspc.clojure_lsp.setup {: capabilities})
 (lspc.cssls.setup {: capabilities})

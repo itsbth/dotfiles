@@ -30,8 +30,7 @@
 (defn- drop-formatting [capabilities]
         (vim.tbl_deep_extend :force capabilities {}))
 
-(def- capabilities (-> (vim.lsp.protocol.make_client_capabilities)
-                       (cmp.update_capabilities)))
+(def- capabilities (cmp.default_capabilities))
 
 (lspc.tsserver.setup {: capabilities
                       :root_dir (lspc.util.root_pattern :package.json)})
@@ -44,8 +43,8 @@
 (lspc.gopls.setup {: capabilities})
 (lspc.golangci_lint_ls.setup {: capabilities})
 
-(lspc.diagnosticls.setup {: capabilities})
-(lspc.asm_lsp.setup {: capabilities})
+; (lspc.diagnosticls.setup {: capabilities})
+; (lspc.asm_lsp.setup {: capabilities})
 (lspc.clangd.setup {: capabilities})
 (lspc.clojure_lsp.setup {: capabilities})
 (lspc.cssls.setup {: capabilities})
@@ -60,6 +59,7 @@
 (lspc.html.setup {: capabilities})
 (lspc.grammarly.setup {: capabilities})
 (lspc.emmet_ls.setup {: capabilities})
+(lspc.rnix.setup {: capabilities})
 
 (defn- plugin? [name]
   (?. packer_plugins name :loaded))

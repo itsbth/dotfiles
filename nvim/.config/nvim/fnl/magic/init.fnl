@@ -45,8 +45,8 @@
   ; load first for big speed
   :lewis6991/impatient.nvim {}
   ;; FENNEL
-  :Olical/aniseed {:tag "v3.29.*"}
-  :Olical/conjure {:tag "v4.34.*"}
+  :Olical/aniseed {:tag "v3.31.*"}
+  :Olical/conjure {:tag "v4.40.*"}
   :Olical/nvim-local-fennel {:tag "v2.19.*"}
 
   ;; MISC FROM MAGIC-KIT, to be evaluated and categorized
@@ -142,7 +142,7 @@
   :kristijanhusak/orgmode.nvim {:mod :org-mode}
   :akinsho/org-bullets.nvim {}
   :lukas-reineke/headlines.nvim {}
-  :michaelb/sniprun {:run "bash ./install.sh"}
+  :michaelb/sniprun {:run "nix shell nixpkgs#cargo -c bash ./install.sh"}
 
   ;; git lost
   :TimUntersberger/neogit {:config (setup! neogit)}
@@ -186,11 +186,13 @@
   :startup-nvim/startup.nvim {:mod :startup}
   ; 🐈bar
   ; :feline-nvim/feline.nvim {:mod :feline}
-  :nvim-lualine/lualine.nvim {:mod :lualine}
+  ; :nvim-lualine/lualine.nvim {:mod :lualine}
   ; 🧠
   ; :glepnir/galaxyline.nvim {:mod :galaxyline}
   ; line
   ; :windwp/windline.nvim {:mod :windline}
+  ; 💇line
+  :rebelot/heirline.nvim {:mod :heirline}
   ; bufferline (because i can't remember what i have open)
   :akinsho/bufferline.nvim {:mod :bufferline}
   ; git gutter++
@@ -204,6 +206,9 @@
   :farmergreg/vim-lastplace {}
   ; debugging
   :mfussenegger/nvim-dap {}
+
+  ; nvim <pre><tab><cr>
+  :mong8se/actually.nvim {}
 
   ;; TERM
   ; :akinsho/toggleterm.nvim {:tag "v2.*" :config #((. (require :toggleterm) :setup) {:open_mapping :<c-\>})}

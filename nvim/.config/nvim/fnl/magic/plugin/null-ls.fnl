@@ -9,6 +9,7 @@
                      bi.formatting.fnlfmt
 
                      bi.diagnostics.shellcheck
+                     bi.diagnostics.hadolint
 
                      bi.diagnostics.eslint]})
 

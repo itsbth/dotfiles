@@ -54,12 +54,12 @@
  :augroup!
  (fn [name ...]
    (local cmd (to-pairs [...]))
-   `(let [group# (nvim.create_augroup ,(tostring name) {:clear true})]
+   `(let [group# (vim.api.nvim_create_augroup ,(tostring name) {:clear true})]
       ,(icollect [_ v (ipairs cmd)]
          (do
            (local opt (dup (. v 2)))
            (tset opt :group `group#)
-           `(nvim.create_autocmd ,(. v 1) ,opt)))))
+           `(vim.api.nvim_create_autocmd ,(. v 1) ,opt)))))
  :setup!
  (fn [module ?opt]
    `(fn [] ((. (require ,(tostring module)) :setup) ,?opt)))}

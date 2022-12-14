@@ -5,6 +5,8 @@
                    : headlines
                    treesitter-parsers nvim-treesitter.parsers}})
 
+(def- packer_plugins {})
+
 (orgmode.setup_ts_grammar)
 (orgmode.setup)
 (when (. packer_plugins :org-bullets)
