@@ -60,6 +60,7 @@
 (lspc.grammarly.setup {: capabilities})
 (lspc.emmet_ls.setup {: capabilities})
 (lspc.rnix.setup {: capabilities})
+(lspc.rust_analyzer.setup {: capabilities})
 
 (defn- plugin? [name]
   (?. packer_plugins name :loaded))
