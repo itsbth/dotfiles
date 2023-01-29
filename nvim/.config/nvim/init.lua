@@ -20,17 +20,30 @@ function ensure(user, repo)
 	end
 end
 
--- Packer is our plugin manager.
-ensure("wbthomason", "packer.nvim")
+-- -- Packer is our plugin manager.
+-- ensure("wbthomason", "packer.nvim")
 
--- Aniseed compiles our Fennel code to Lua and loads it automatically.
-ensure("Olical", "aniseed")
+-- -- Aniseed compiles our Fennel code to Lua and loads it automatically.
+-- ensure("Olical", "aniseed")
 
--- Load impatient early
-ensure("lewis6991", "impatient.nvim")
+-- -- Load impatient early
+-- ensure("lewis6991", "impatient.nvim")
 
--- Precompile lua
-require("impatient")
+-- -- Precompile lua
+-- require("impatient")
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
 -- Aniseed looks for this when it's loaded then loads the rest of your
