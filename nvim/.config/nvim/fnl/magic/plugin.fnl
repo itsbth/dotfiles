@@ -1,4 +1,4 @@
-(module magic.plugin {autoload {a aniseed.core lazy}})
+(module magic.plugin {autoload {a aniseed.core : lazy}})
 
 (defn- safe-require-plugin-config [name]
        "Safely require a module under the magic.plugin.* prefix. Will catch errors
@@ -15,13 +15,13 @@
 
 (defn fold-pairs [pairs]
   "Convert a table of interleaved keys (names) and options an array table"
-  (let [pkgs (a.array)]
+  (let [pkgs []]
     (for [i 1 (a.count pairs) 2]
       (let [name (. pairs i)
             opts (. pairs (+ i 1))]
         (-?> (. opts :mod) (safe-require-plugin-config))
         (a.assoc opts 1 name)
-        (a.push pkgs opts)))
+        (table.insert pkgs opts)))
     pkgs))
 
 (defn use [...]
@@ -32,5 +32,4 @@
   This is just a helper / syntax sugar function to make interacting with packer
   a little more concise."
       (let [pkgs (fold-pairs [...])]
-        (lazy.setup pkgs)
-      nil)
+        (lazy.setup pkgs)))
