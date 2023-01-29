@@ -1,13 +1,3 @@
--- Welcome to your magic kit
--- This is the first file Neovim will load.
--- We'll ensure we have a plugin manager and Aniseed.
--- This will allow us to load more Fennel based code and download more plugins.
-
--- Make some modules easier to access.
-local execute = vim.api.nvim_command
-local fn = vim.fn
-local fmt = string.format
-
 -- TODO: This no longer allows for bootstrapping (indeed, it'd be impossible to start from a fresh install now)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -30,3 +20,7 @@ vim.g["aniseed#env"] = { module = "magic.init", compile = true }
 -- Now head to fnl/magic/init.fnl to continue your journey.
 -- Try pressing gf on the file path to [g]o to the [f]ile.
 
+-- require("lazy").setup({"Olical/aniseed"})
+
+-- add aniseed to rtp
+vim.opt.rtp:append(vim.fn.stdpath("data") .. "/lazy/aniseed")

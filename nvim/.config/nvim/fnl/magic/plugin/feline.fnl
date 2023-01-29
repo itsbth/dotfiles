@@ -49,7 +49,7 @@
    :style :bold})
 
 (defn- plugin? [name]
-  (?. packer_plugins name :loaded))
+  true)
 
 (add-component :left {:provider (fn [] (vmu.get_vim_mode))
                       :hl color-by-mode

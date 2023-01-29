@@ -63,7 +63,7 @@
 (lspc.rust_analyzer.setup {: capabilities})
 
 (defn- plugin? [name]
-  (?. packer_plugins name :loaded))
+  true)
 
 (when (plugin? :lsp_lines.nvim)
       (lsp_lines.setup {})

@@ -45,9 +45,9 @@
   ; load first for big speed
   :lewis6991/impatient.nvim {}
   ;; FENNEL
-  :Olical/aniseed {:tag "v3.31.*"}
-  :Olical/conjure {:tag "v4.40.*"}
-  :Olical/nvim-local-fennel {:tag "v2.19.*"}
+  :Olical/aniseed {:version "v3.31.*"}
+  :Olical/conjure {:version "v4.40.*"}
+  :Olical/nvim-local-fennel {:version "v2.19.*"}
 
   ;; MISC FROM MAGIC-KIT, to be evaluated and categorized
   :PeterRincker/vim-argumentative {}
@@ -81,7 +81,7 @@
   :tpope/vim-unimpaired {}
   :tpope/vim-vinegar {}
   ; :w0rp/ale {:mod :ale} ; replaced by null-ls
-  :wbthomason/packer.nvim {}
+  ;; :wbthomason/packer.nvim {}
 
   ;; MINI (misc utilities)
   :echasnovski/mini.nvim {:mod :mini}
@@ -164,7 +164,7 @@
   ; catty colours (currently disabled as it breaks other schemes)
   ; :catppuccin/nvim {:as :catppuccin :mod :catppuccin}
   ; rosy colours
-  :rose-pine/neovim {:as :rose-pine}
+  :rose-pine/neovim {:name :rose-pine}
   ; wavy colours
   :rebelot/kanagawa.nvim {}
   ; pretty icons
@@ -174,7 +174,7 @@
   ; where are my files
   :kyazdani42/nvim-tree.lua {:mod :nvim-tree}
   ; how do i get to my files
-  :nvim-telescope/telescope.nvim {:requires [:nvim-lua/plenary.nvim]
+  :nvim-telescope/telescope.nvim {:dependencies [:nvim-lua/plenary.nvim]
                                   :mod :telescope}
   :nvim-telescope/telescope-fzf-native.nvim {:run :make}
   ; vim.ui.* improvements
@@ -196,7 +196,7 @@
   ; bufferline (because i can't remember what i have open)
   :akinsho/bufferline.nvim {:mod :bufferline}
   ; git gutter++
-  :lewis6991/gitsigns.nvim {:requires [:nvim-lua/plenary.nvim]
+  :lewis6991/gitsigns.nvim {:dependencies [:nvim-lua/plenary.nvim]
                             :config (setup! gitsigns)}
   ; tree-sitter powered status segment
   :SmiteshP/nvim-gps {}
@@ -212,7 +212,7 @@
 
   ;; TERM
   ; :akinsho/toggleterm.nvim {:tag "v2.*" :config #((. (require :toggleterm) :setup) {:open_mapping :<c-\>})}
-  :akinsho/toggleterm.nvim {:tag "v2.*" :mod :toggleterm}
+  :akinsho/toggleterm.nvim {:version "v2.*" :mod :toggleterm}
 
   ;; languages
   ; markdown

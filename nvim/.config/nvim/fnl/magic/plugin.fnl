@@ -19,8 +19,9 @@
     (for [i 1 (a.count pairs) 2]
       (let [name (. pairs i)
             opts (. pairs (+ i 1))]
-        (-?> (. opts :mod) (safe-require-plugin-config))
+        ;; (-?> (. opts :mod) (safe-require-plugin-config))
         (a.assoc opts 1 name)
+        (a.assoc opts :config (. opts :mod))
         (table.insert pkgs opts)))
     pkgs))
 
