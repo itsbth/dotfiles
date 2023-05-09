@@ -45,8 +45,8 @@
   ; load first for big speed
   :lewis6991/impatient.nvim {}
   ;; FENNEL
-  :Olical/aniseed {:tag "v3.31.*"}
-  :Olical/conjure {:tag "v4.40.*"}
+  :Olical/aniseed {:tag "v3.33.*"}
+  :Olical/conjure {:tag "v4.44.*"}
   :Olical/nvim-local-fennel {:tag "v2.19.*"}
 
   ;; MISC FROM MAGIC-KIT, to be evaluated and categorized

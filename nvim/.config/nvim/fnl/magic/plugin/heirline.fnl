@@ -1,12 +1,12 @@
 (module magic.plugin.heirline
-        {autoload {nvim aniseed.nvim
-                   : heirline
-                   utils heirline.utils
-                   gps nvim-gps
-                   devicons nvim-web-devicons
-                   {: vi-mode} magic.plugin.heirline.vi-mode
-                   {: lsp-active} magic.plugin.heirline.lsp
-                   {: git-status} magic.plugin.heirline.git}})
+  {autoload {nvim aniseed.nvim
+             : heirline
+             utils heirline.utils
+             gps nvim-gps
+             devicons nvim-web-devicons
+             {: vi-mode} magic.plugin.heirline.vi-mode
+             {: lsp-active} magic.plugin.heirline.lsp
+             {: git-status} magic.plugin.heirline.git}})
 
 (gps.setup {})
 
@@ -45,8 +45,8 @@
                               :group :Heirline})
 
 (def- file-name-parent
-      {:init (fn [self]
-               (set self.filename (vim.api.nvim_buf_get_name 0)))})
+  {:init (fn [self]
+           (set self.filename (vim.api.nvim_buf_get_name 0)))})
 
 (def- file-icon {:init (fn [self]
                          (let [ext (vim.fn.fnamemodify self.filename ":e")
@@ -60,20 +60,27 @@
                  :hl (fn [self]
                        {:fg self.icon_color})})
 
+(def file-modifiers [{:condition (fn [] vim.bo.modified)
+                      :provider "[+]"}
+                     {:condition #(or (not vim.bo.modifiable) vim.bo.readonly)
+                      :provider ""
+                      :hl {:fg :orange}}])
+
 (def- file-name-block
-      {:provider (fn [self]
-                   (let [relative (vim.fn.fnamemodify self.filename ":.")]
-                     (if (not= relative "")
-                         relative
-                         "[No name]")))
-       :hl {:fg (fg (utils.get_highlight :Directory))}})
+  {:provider (fn [self]
+               (let [relative (vim.fn.fnamemodify self.filename ":.")]
+                 (if (not= relative "")
+                   relative
+                   "[No name]")))
+   :hl {:fg (fg (utils.get_highlight :Directory))}})
 
-(def- file-name-block (utils.insert file-name-parent file-icon file-name-block))
+(def- file-name-block (utils.insert file-name-parent file-icon (utils.insert file-name-block file-modifiers)))
 
-(heirline.setup [(utils.surround ["" ""] :bright_bg [vi-mode])
-                 {:provider " "}
-                 file-name-block
-                 git-status
-                 {:provider "%="}
-                 lsp-active])
+(heirline.setup {:statusline [(utils.surround ["" ""] :bright_bg [vi-mode])
+                              {:provider " "}
+                              file-name-block
+                              {:provider " "}
+                              git-status
+                              {:provider "%="}
+                              lsp-active]})
 
