@@ -5,7 +5,7 @@
              ca   lspsaga.codeaction
              wk which-key}})
 
-(saga.init_lsp_saga {})
+(saga.setup {})
 
 (wk.register {:g {:h [prov.lsp_finder "LSP Finder"]}
               :c {:a [ca.code_action "LSP Code Actions"]}}

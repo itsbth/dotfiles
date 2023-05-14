@@ -167,6 +167,8 @@
   :rose-pine/neovim {:as :rose-pine}
   ; wavy colours
   :rebelot/kanagawa.nvim {}
+  ; retro colors
+  :maxmx03/fluoromachine.nvim {:config (setup! fluoromachine {:glow true})}
   ; pretty icons
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   ; can't live without parinfer -- let's try a pure lua variant
