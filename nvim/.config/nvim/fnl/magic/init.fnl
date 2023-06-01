@@ -121,7 +121,7 @@
   :williamboman/mason.nvim {:mod :mason}
   :williamboman/mason-lspconfig.nvim {}
   ; better lsp
-  :glepnir/lspsaga.nvim {:mod :lspsaga}
+  :nvimdev/lspsaga.nvim {:mod :lspsaga}
   ; fix missing colors
   :folke/lsp-colors.nvim {}
   ; does stuff

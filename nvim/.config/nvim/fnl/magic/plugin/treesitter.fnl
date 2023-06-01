@@ -2,7 +2,9 @@
   {autoload {nvim aniseed.nvim
              treesitter nvim-treesitter.configs}})
 
-(def- ensure_installed [:javascript :typescript :json :yaml :python :lua :fennel])
+(def- ensure_installed [:javascript :typescript :json :yaml :python :lua :fennel
+                        ; needed for lspsaga
+                        :markdown :markdown_inline])
 
 (treesitter.setup {: ensure_installed
                    :highlight {:enable true}

@@ -7,7 +7,7 @@
                    : schemastore}})
 
 
-(wk.register {:K [vim.lsp.buf.hover "LSP Hover"]})
+; (wk.register {:K [vim.lsp.buf.hover "LSP Hover"]})
 
 ;; Misc bindings, heavily inspired by kickstart
 ; TODO: Only register if lsp is active

@@ -9,11 +9,12 @@
                    : lsp_lines}})
 
 
-(wk.register {:K [vim.lsp.buf.hover "LSP Hover"]})
+; (wk.register {:K [vim.lsp.buf.hover "LSP Hover"]})
 
 ;; Misc bindings, heavily inspired by kickstart
 ; TODO: Only register if lsp is active
 
+; TODO: Compare this with LSPSaga, probably too much overlap
 (wk.register {:gd [vim.lsp.buf.declaration "LSP Declaration"]})
 (wk.register {:gD [vim.lsp.buf.definition "LSP Definition"]})
 (wk.register {:gi [vim.lsp.buf.implementation "LSP Implementation"]})
