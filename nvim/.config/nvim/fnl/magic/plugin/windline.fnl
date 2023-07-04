@@ -30,23 +30,23 @@
                          :niI {1 " NORMAL" 2 :Normal}
                          :niR {1 " NORMAL" 2 :Normal}
                          :niV {1 " NORMAL" 2 :Normal}
-                         :v {1 " VISUAL" 2 :Visual}
-                         :V {1 " V-LINE" 2 :Visual}
-                         "\022" {1 " V-BLOCK" 2 :Visual}
+                         :v {1 "󰂔 VISUAL" 2 :Visual}
+                         :V {1 "󰂔 V-LINE" 2 :Visual}
+                         "\022" {1 "󰂔 V-BLOCK" 2 :Visual}
                          :s {1 " SELECT" 2 :Visual}
                          :S {1 " S-LINE" 2 :Visual}
                          "\019" {1 " S-BLOCK" 2 :Visual}
                          :i {1 " INSERT" 2 :Insert}
                          :ic {1 " INSERT" 2 :Insert}
                          :ix {1 " INSERT" 2 :Insert}
-                         :R {1 " REPLACE" 2 :Replace}
-                         :Rc {1 " REPLACE" 2 :Replace}
+                         :R {1 "󰈺 REPLACE" 2 :Replace}
+                         :Rc {1 "󰈺 REPLACE" 2 :Replace}
                          :Rv {1 :V-REPLACE 2 :Normal}
-                         :Rx {1 " REPLACE" 2 :Normal}
+                         :Rx {1 "󰈺 REPLACE" 2 :Normal}
                          :c {1 " COMMAND" 2 :Command}
                          :cv {1 " COMMAND" 2 :Command}
                          :ce {1 " COMMAND" 2 :Command}
-                         :r {1 " REPLACE" 2 :Replace}
+                         :r {1 "󰈺 REPLACE" 2 :Replace}
                          :rm {1 " MORE" 2 :Normal}
                          :r? {1 " CONFIRM" 2 :Normal}
                          :! {1 " SHELL" 2 :Normal}
