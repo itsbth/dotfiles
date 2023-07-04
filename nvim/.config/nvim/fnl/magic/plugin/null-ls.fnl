@@ -11,5 +11,7 @@
                      bi.diagnostics.shellcheck
                      bi.diagnostics.hadolint
 
+                     bi.diagnostics.golangci_lint
+
                      bi.diagnostics.eslint]})
 
