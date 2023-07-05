@@ -34,11 +34,33 @@
   (collect [k v (pairs tbl)]
     k v))
 
+(lambda pack [name ?opts]
+  (let [opts (or ?opts {})
+        opts (collect [k v (pairs opts)]
+              (match k
+                :mod (values :config `#(require ,(.. "magic.plugin." v)))
+                _ (values k v)))]
+    (doto opts
+          (tset 1 name))))
+
 {;; This is just a silly example macro.
  ; (infix-example-macro 2 + 3) => compiles to: (+ 2 3) => evaluates to: 5
  :infix-example-macro
  (fn [x op y]
    `(,op ,x ,y))
+
+ :countdown!
+ (lambda []
+   (set _G.magic/packages []))
+
+ :use-package!
+ (lambda [name ?opts]
+   (table.insert _G.magic/packages (pack name ?opts)))
+
+ :liftoff!
+ (lambda []
+   `(let [lazy# (require :lazy)]
+     (lazy#.setup ,_G.magic/packages)))
 
  ;; Create an augroup for your autocmds.
  ; (augroup my-group
