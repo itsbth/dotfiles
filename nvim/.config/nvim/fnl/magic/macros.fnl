@@ -51,7 +51,8 @@
 
  :countdown!
  (lambda []
-   (set _G.magic/packages []))
+   (set _G.magic/packages [])
+   (set _G.magic/on-load []))
 
  :use-package!
  (lambda [name ?opts]
@@ -60,7 +61,12 @@
  :liftoff!
  (lambda []
    `(let [lazy# (require :lazy)]
-     (lazy#.setup ,_G.magic/packages)))
+     (lazy#.setup ,_G.magic/packages)
+     (each [_# fun# (pairs _G.magic/on-load)] (fun#))))
+
+ :on-load
+ (lambda [...]
+   `(table.insert _G.magic/on-load (fn [] ,...)))
 
  ;; Create an augroup for your autocmds.
  ; (augroup my-group
@@ -73,6 +79,7 @@
        ,...
        (vim.cmd "augroup END")
        nil))
+
  :augroup!
  (fn [name ...]
    (local cmd (to-pairs [...]))
