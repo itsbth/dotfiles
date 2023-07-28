@@ -43,16 +43,11 @@
     (doto opts
           (tset 1 name))))
 
-{;; This is just a silly example macro.
- ; (infix-example-macro 2 + 3) => compiles to: (+ 2 3) => evaluates to: 5
- :infix-example-macro
- (fn [x op y]
-   `(,op ,x ,y))
-
+{
  :countdown!
  (lambda []
    (set _G.magic/packages [])
-   (set _G.magic/on-load []))
+   nil)
 
  :use-package!
  (lambda [name ?opts]
@@ -62,7 +57,7 @@
  (lambda []
    `(let [lazy# (require :lazy)]
      (lazy#.setup ,_G.magic/packages)
-     (each [_# fun# (pairs _G.magic/on-load)] (fun#))))
+     (each [_# fun# (pairs (or _G.magic/on-load {})] (fun#))))
 
  :on-load
  (lambda [...]
