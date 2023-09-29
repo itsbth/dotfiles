@@ -1,0 +1,5 @@
+(import-macros {: module! : use-package! : fin!} :macros)
+(module!)
+; (use-package! :folke/tokyonight.nvim {:lazy false :priority 1000})
+(use-package! :bluz71/vim-nightfly-colors {:name :nightfly :lazy false :priority 1000})
+(fin!)

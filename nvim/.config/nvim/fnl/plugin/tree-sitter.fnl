@@ -4,6 +4,7 @@
 
 (local ensure_installed [:javascript
                          :typescript
+                         :fennel
                          :tsx
                          :html
                          :css
@@ -13,7 +14,10 @@
 
 (use-package! :nvim-treesitter/nvim-treesitter
               {:opts {:highlight {:enable true}
-		      : ensure_installed}
-	       :main :nvim-treesitter.configs})
+                      :incremental_selection {:enable true}
+                      :textobjects {:enable true}
+                      :indent {:enable true :disable [:python]}
+                      : ensure_installed}
+               :main :nvim-treesitter.configs})
 
 (fin!)

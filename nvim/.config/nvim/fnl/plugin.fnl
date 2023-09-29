@@ -3,7 +3,7 @@
 (module!)
 
 ;; Fennel config
-(use-package! :udayvir-singh/tangerine.nvim {:tag "v2.6"})
+; (use-package! :udayvir-singh/tangerine.nvim {:tag "v2.6"})
 (use-package! :udayvir-singh/hibiscus.nvim {:tag "v1.7"})
 
 ;; Misc core modules. Split out?
